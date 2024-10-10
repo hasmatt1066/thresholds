@@ -6,15 +6,31 @@
     <link rel="stylesheet" type="text/css" href="flipbook.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="turn.min.js"></script>
+    <style>
+        .page img.split {
+            width: 50%;
+            height: auto;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
     <div id="flipbook">
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3"></div>
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" class="split" alt="Cover Left">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" class="split" alt="Cover Right" style="transform: scaleX(-1);">
+        </div>
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" class="split" alt="Page 2 Left">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" class="split" alt="Page 2 Right" style="transform: scaleX(-1);">
+        </div>
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" class="split" alt="Page 3 Left">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" class="split" alt="Page 3 Right" style="transform: scaleX(-1);">
+        </div>
         <!-- Add more pages as needed -->
     </div>
-
+    
     <script type="text/javascript">
         $(document).ready(function() {
             var flipbook = $("#flipbook");
@@ -32,7 +48,6 @@
                     width: newWidth,
                     height: newHeight,
                     autoCenter: true,
-                    pages: flipbook.find('.page').length, // Keep original page count
                     display: 'double', // Ensure double display for spreads
                     when: {
                         turned: function(e, page) {

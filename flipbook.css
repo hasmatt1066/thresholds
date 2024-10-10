@@ -30,11 +30,3 @@ body {
     height: auto;
     object-fit: contain;
 }
-
-#flipbook .page img.left {
-    object-position: left;
-}
-
-#flipbook .page img.right {
-    object-position: right;
-}

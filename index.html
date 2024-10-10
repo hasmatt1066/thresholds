@@ -5,21 +5,27 @@
     <link rel="stylesheet" type="text/css" href="flipbook.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="turn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+    <!-- Remove the following line to avoid conflict -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script> -->
 </head>
 <body>
     <div id="flipbook">
         <div class="page"><img src="Thresholdsjpgspreads/ThresholdsFinalPageSpreadswithCover.jpg"></div>
+        <div class="page"><img src="Thresholds jpg spreads/SecondPage.jpg"></div>
         <!-- Add more pages as needed -->
     </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#flipbook").turn({
-                width: 800,
-                height: 600,
-                autoCenter: true
-            });
+            if (typeof $.fn.turn === 'undefined') {
+                console.error('Turn.js is not loaded');
+            } else {
+                $("#flipbook").turn({
+                    width: 800,
+                    height: 600,
+                    autoCenter: true
+                });
+            }
         });
     </script>
 </body>

@@ -17,21 +17,32 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            if (typeof $.fn.turn === 'undefined') {
-                console.error('Turn.js is not loaded');
-            } else {
-                console.log('Turn.js loaded successfully');
-                $("#flipbook").turn({
-                    width: '100%', // Responsive width
-                    height: '100%', // Responsive height
+            var flipbook = $("#flipbook");
+
+            function updateFlipbookSize() {
+                var firstPage = flipbook.find('.page img').first();
+                var newWidth = firstPage.width();
+                var newHeight = firstPage.height();
+
+                flipbook.turn({
+                    width: newWidth,
+                    height: newHeight,
                     autoCenter: true,
-                    pages: 3, // Ensure this matches the number of pages
+                    pages: 3,
                     when: {
                         turned: function(e, page) {
                             console.log('Current view: ', $(this).turn('view'));
                         }
                     }
                 });
+            }
+
+            firstPage.on('load', function() {
+                updateFlipbookSize();
+            });
+
+            if (firstPage.prop('complete')) {
+                updateFlipbookSize();
             }
         });
     </script>

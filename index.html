@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Flipbook Example</title>
     <link rel="stylesheet" type="text/css" href="flipbook.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,8 +22,8 @@
             } else {
                 console.log('Turn.js loaded successfully');
                 $("#flipbook").turn({
-                    width: 1200, // Adjusted width to accommodate larger images
-                    height: 1200, // Adjusted height to accommodate larger images
+                    width: '100%', // Responsive width
+                    height: '100%', // Responsive height
                     autoCenter: true,
                     pages: 3, // Ensure this matches the number of pages
                     when: {

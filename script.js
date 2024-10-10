@@ -1,39 +1,16 @@
-$(document).ready(function() {
-    const pdfUrl = 'https://drive.google.com/uc?id=YOUR_FILE_ID'; // Replace with your Google Drive file ID
+let currentPage = 0;
+const pages = document.querySelectorAll('.page');
 
-    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
-        const numPages = pdf.numPages;
-        const flipbook = $('#flipbook');
-
-        function renderPage(pageNum) {
-            pdf.getPage(pageNum).then(page => {
-                const scale = 1.5;
-                const viewport = page.getViewport({ scale });
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                flipbook.append(canvas);
-
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext).promise.then(() => {
-                    if (pageNum < numPages) {
-                        renderPage(pageNum + 1);
-                    }
-                });
-            });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+        if (currentPage < pages.length - 1) {
+            pages[currentPage].style.transform = 'rotateY(-180deg)';
+            currentPage++;
         }
-
-        renderPage(1);
-
-        // Initialize flipbook
-        flipbook.pdfFlip({
-            width: 800,
-            height: 600,
-            autoCenter: true
-        });
-    });
+    } else if (e.key === 'ArrowLeft') {
+        if (currentPage > 0) {
+            currentPage--;
+            pages[currentPage].style.transform = 'rotateY(0deg)';
+        }
+    }
 });

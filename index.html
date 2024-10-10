@@ -25,8 +25,8 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage.width();
-                var newHeight = firstPage.height();
+                var newWidth = firstPage[0].naturalWidth;
+                var newHeight = firstPage[0].naturalHeight;
 
                 flipbook.turn({
                     width: newWidth,

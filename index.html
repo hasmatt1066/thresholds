@@ -25,7 +25,7 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage[0].naturalWidth; // Use full width for two-page spread
+                var newWidth = firstPage[0].naturalWidth * 2; // Each spread spans across two pages
                 var newHeight = firstPage[0].naturalHeight;
 
                 flipbook.turn({
@@ -33,6 +33,7 @@
                     height: newHeight,
                     autoCenter: true,
                     pages: flipbook.find('.page').length, // Keep original page count
+                    display: 'double', // Ensure double display for spreads
                     when: {
                         turned: function(e, page) {
                             var currentView = $(this).turn('view');

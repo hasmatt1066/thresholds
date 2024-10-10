@@ -19,11 +19,12 @@
             if (typeof $.fn.turn === 'undefined') {
                 console.error('Turn.js is not loaded');
             } else {
+                console.log('Turn.js loaded successfully');
                 $("#flipbook").turn({
                     width: 800,
                     height: 600,
-                    autoCenter: true
-                    // Add more options as needed
+                    autoCenter: true,
+                    pages: 3 // Ensure this matches the number of pages
                 });
             }
         });

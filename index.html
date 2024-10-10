@@ -9,12 +9,12 @@
 </head>
 <body>
     <div id="flipbook">
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover Left" class="left"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover Right" class="right"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left" class="left"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right" class="right"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left" class="left"></div>
-        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right" class="right"></div>
+        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover_left.jpg" alt="Cover Left"></div>
+        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover_right.jpg" alt="Cover Right"></div>
+        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2_left.jpg" alt="Page 2 Left"></div>
+        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2_right.jpg" alt="Page 2 Right"></div>
+        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3_left.jpg" alt="Page 3 Left"></div>
+        <div class="page"><img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3_right.jpg" alt="Page 3 Right"></div>
         <!-- Add more pages as needed -->
     </div>
 
@@ -28,14 +28,14 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage[0].naturalWidth;
+                var newWidth = firstPage[0].naturalWidth * 2; // Each spread spans across two pages
                 var newHeight = firstPage[0].naturalHeight;
 
                 flipbook.turn({
-                    width: newWidth * 2,
+                    width: newWidth,
                     height: newHeight,
                     autoCenter: true,
-                    display: 'double',
+                    display: 'double', // Ensure double display for spreads
                     when: {
                         turned: function(e, page) {
                             var currentView = $(this).turn('view');

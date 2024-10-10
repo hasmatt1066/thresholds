@@ -4,16 +4,20 @@ body {
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items at the top */
+    align-items: center; /* Center the flipbook vertically */
     height: 100vh;
     margin: 0;
+    overflow: hidden; /* Prevent scroll bars */
 }
 
 #flipbook {
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid #36454F; /* Charcoal grey border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
     width: 80%;
-    height: 100vh; /* Full viewport height */
+    height: auto; /* Auto height to maintain aspect ratio */
+    max-height: 90vh; /* Ensure it fits within the viewport */
+    margin: 20px 0; /* Add some margin for better visibility */
 }
 
 #flipbook .page {
@@ -45,6 +49,7 @@ body {
     height: 100%;
     position: absolute;
     top: 0; /* Ensure the image starts at the top */
+    overflow: hidden; /* Ensure proper clipping */
 }
 
 #flipbook .page .left-half {
@@ -57,18 +62,16 @@ body {
 
 #flipbook .page .left-half img,
 #flipbook .page .right-half img {
-    width: 200%;
+    width: 200%; /* Ensure the image spans across both halves */
     height: auto;
     position: absolute;
     top: 0; /* Ensure the image starts at the top */
 }
 
 #flipbook .page .left-half img {
-    left: 0;
-    clip: rect(0, 50%, 100%, 0);
+    left: -50%; /* Shift the left half image to the left */
 }
 
 #flipbook .page .right-half img {
-    right: 0;
-    clip: rect(0, 100%, 100%, 50%);
+    left: -50%; /* Shift the right half image to the left */
 }

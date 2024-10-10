@@ -24,7 +24,7 @@ body {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center the cover page */
+    align-items: flex-start; /* Align spreads at the top */
     width: 100%;
     height: 100%; /* Full height of flipbook */
     position: relative;
@@ -37,10 +37,6 @@ body {
 
 #flipbook .page.cover {
     align-items: center; /* Center the cover page */
-}
-
-#flipbook .page.spread {
-    align-items: flex-start; /* Align spreads at the top */
 }
 
 #flipbook .page .left-half,
@@ -62,10 +58,11 @@ body {
 
 #flipbook .page .left-half img,
 #flipbook .page .right-half img {
-    width: 200%; /* Ensure the image spans across both halves */
-    height: auto;
+    width: 100%; /* Ensure the image spans across both halves */
+    height: 100%;
     position: absolute;
     top: 0; /* Ensure the image starts at the top */
+    object-fit: cover; /* Ensure the image covers the entire half */
 }
 
 #flipbook .page .left-half img {

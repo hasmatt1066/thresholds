@@ -19,8 +19,6 @@
             <div class="left-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
             </div>
-        </div>
-        <div class="page spread">
             <div class="right-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
             </div>
@@ -29,8 +27,6 @@
             <div class="left-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
             </div>
-        </div>
-        <div class="page spread">
             <div class="right-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
             </div>
@@ -48,11 +44,11 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage[0].naturalWidth * 2; // Each spread spans across two pages
+                var newWidth = firstPage[0].naturalWidth; // Each spread spans across two pages
                 var newHeight = firstPage[0].naturalHeight;
 
                 flipbook.turn({
-                    width: newWidth,
+                    width: newWidth * 2,
                     height: newHeight,
                     autoCenter: true,
                     display: 'double', // Ensure double display for spreads

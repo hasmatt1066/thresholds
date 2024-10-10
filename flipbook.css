@@ -26,18 +26,18 @@ body {
     position: relative;
 }
 
-#flipbook .page img {
+#flipbook .page .left-half img {
+    position: absolute;
+    left: 0;
     width: 200%;
     height: auto;
-    position: absolute;
-}
-
-#flipbook .page img.left-half {
-    left: 0;
     clip: rect(0, 50%, 100%, 0);
 }
 
-#flipbook .page img.right-half {
+#flipbook .page .right-half img {
+    position: absolute;
     right: 0;
+    width: 200%;
+    height: auto;
     clip: rect(0, 100%, 100%, 50%);
 }

@@ -24,7 +24,7 @@ body {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center the cover page */
+    align-items: flex-start; /* Align items at the top */
     width: 100%;
     height: 100%; /* Full height of flipbook */
     position: relative;
@@ -61,8 +61,8 @@ body {
 
 #flipbook .page .left-half img,
 #flipbook .page .right-half img {
-    width: 200%;
-    height: auto;
+    width: 100%; /* Adjust width to ensure proper clipping */
+    height: 100%;
     position: absolute;
     top: 0; /* Ensure the image starts at the top */
 }

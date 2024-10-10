@@ -37,6 +37,7 @@
                 });
             }
 
+            var firstPage = flipbook.find('.page img').first();
             firstPage.on('load', function() {
                 updateFlipbookSize();
             });

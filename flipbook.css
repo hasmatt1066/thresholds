@@ -1,75 +1,93 @@
-/* flipbook.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align items at the top */
-    height: 100vh;
-    margin: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flipbook Example</title>
+    <link rel="stylesheet" type="text/css" href="flipbook.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="turn.min.js"></script>
+</head>
+<body>
+    <div id="flipbook">
+        <!-- First spread (cover) should not be split -->
+        <div class="page cover">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
+        </div>
+        
+        <!-- Remaining spreads should be split across two pages -->
+        <div class="page spread">
+            <div class="left-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
+            </div>
+        </div>
+        <div class="page spread">
+            <div class="right-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
+            </div>
+        </div>
+        <div class="page spread">
+            <div class="left-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
+            </div>
+        </div>
+        <div class="page spread">
+            <div class="right-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
+            </div>
+        </div>
+        <!-- Add more pages as needed -->
+    </div>
 
-#flipbook {
-    background-color: white;
-    border: 2px solid #36454F; /* Charcoal grey border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
-    width: 80%;
-    height: 100vh; /* Full viewport height */
-}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var flipbook = $("#flipbook");
 
-#flipbook .page {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center the cover page */
-    width: 100%;
-    height: 100%; /* Full height of flipbook */
-    position: relative;
-}
+            function updateFlipbookSize() {
+                var firstPage = flipbook.find('.page img').first();
+                if (firstPage.length === 0) {
+                    console.error("No images found in the flipbook.");
+                    return;
+                }
+                var newWidth = firstPage[0].naturalWidth * 2; // Each spread spans across two pages
+                var newHeight = firstPage[0].naturalHeight;
 
-#flipbook .page img {
-    width: 100%;
-    height: auto;
-}
+                flipbook.turn({
+                    width: newWidth,
+                    height: newHeight,
+                    autoCenter: true,
+                    display: 'double', // Ensure double display for spreads
+                    when: {
+                        turned: function(e, page) {
+                            var currentView = $(this).turn('view');
+                            console.log('Current view: ', currentView);
+                        }
+                    }
+                });
+            }
 
-#flipbook .page.cover {
-    align-items: center; /* Center the cover page */
-}
+            var firstPage = flipbook.find('.page img').first();
+            firstPage.on('load', function() {
+                updateFlipbookSize();
+            });
 
-#flipbook .page.spread {
-    align-items: flex-start; /* Align spreads at the top */
-}
+            if (firstPage.prop('complete')) {
+                updateFlipbookSize();
+            }
 
-#flipbook .page .left-half,
-#flipbook .page .right-half {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0; /* Ensure the image starts at the top */
-}
+            // Event listeners for flipping pages on click
+            flipbook.on('click', '.page', function() {
+                flipbook.turn('next');
+            });
 
-#flipbook .page .left-half {
-    left: 0;
-}
-
-#flipbook .page .right-half {
-    right: 0;
-}
-
-#flipbook .page .left-half img,
-#flipbook .page .right-half img {
-    width: 200%;
-    height: auto;
-    position: absolute;
-    top: 0; /* Ensure the image starts at the top */
-}
-
-#flipbook .page .left-half img {
-    left: 0;
-    clip: rect(0, 50%, 100%, 0);
-}
-
-#flipbook .page .right-half img {
-    right: 0;
-    clip: rect(0, 100%, 100%, 50%);
-}
+            // Event listeners for flipping pages with arrow keys
+            $(document).keydown(function(e) {
+                if (e.key === "ArrowRight") {
+                    flipbook.turn('next');
+                } else if (e.key === "ArrowLeft") {
+                    flipbook.turn('previous');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

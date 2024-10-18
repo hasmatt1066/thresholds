@@ -4,56 +4,68 @@ body {
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Center the flipbook vertically */
     height: 100vh;
     margin: 0;
-    overflow: hidden;
+    overflow: hidden; /* Prevent scroll bars */
 }
 
 #flipbook {
     background-color: white;
-    border: 2px solid #36454F;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    height: auto;
-    max-height: 90vh;
+    border: 2px solid #36454F; /* Charcoal grey border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    width: 800px; /* Set width to match JavaScript */
+    height: 400px; /* Set height to match JavaScript */
+    position: relative; /* Ensure correct positioning */
 }
 
 #flipbook .page {
+    overflow: hidden;
+    position: relative; /* Enable positioning of child elements */
     width: 100%;
     height: 100%;
+}
+
+#flipbook .page img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+#flipbook .page.cover {
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+    align-items: center; /* Center the cover page */
 }
 
 #flipbook .page .left-half,
 #flipbook .page .right-half {
     width: 50%;
     height: 100%;
-    overflow: hidden;
-    position: relative;
+    position: absolute;
+    top: 0; /* Start from the top */
+    overflow: hidden; /* Ensure proper clipping */
+}
+
+#flipbook .page .left-half {
+    left: 0; /* Align left */
+}
+
+#flipbook .page .right-half {
+    right: 0; /* Align right */
 }
 
 #flipbook .page .left-half img,
 #flipbook .page .right-half img {
-    width: 200%;
+    width: 200%; /* Ensure the image spans across both halves */
     height: auto;
     position: absolute;
-    top: 0;
+    top: 0; /* Ensure the image starts at the top */
 }
 
 #flipbook .page .left-half img {
-    left: 0;
+    left: 0; /* Position the left half image correctly */
 }
 
 #flipbook .page .right-half img {
-    left: -100%;
-}
-
-#flipbook .page img {
-    display: block;
-    max-width: none;
+    left: -100%; /* Shift the right half image to the left */
 }

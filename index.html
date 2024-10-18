@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Flipbook Example</title>
-    <link rel="stylesheet" type="text/css" href="flipbook.css">
+    <link rel="stylesheet" type="text/css" href="flipbook.css"> <!-- Your existing CSS file -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="turn.min.js"></script>
+    <script src="turn.min.js"></script> <!-- Make sure this path is correct for turn.js -->
 </head>
 <body>
     <div id="flipbook">
-        <!-- First page (cover) should not be split -->
-        <div class="page">
+        <!-- Cover page (single) -->
+        <div class="page cover">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
 
-        <!-- Each following image should be a full-page image on its own -->
+        <!-- First spread (split into left and right halves) -->
         <div class="page">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Spread 1 Left">
-        </div>
-        <div class="page">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Spread 1 Right">
+            <div class="left-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
+            </div>
+            <div class="right-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
+            </div>
         </div>
 
+        <!-- Second spread -->
         <div class="page">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Spread 2 Left">
+            <div class="left-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
+            </div>
+            <div class="right-half">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
+            </div>
         </div>
-        <div class="page">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Spread 2 Right">
-        </div>
-        <!-- Add more pages as needed -->
+
+        <!-- Add more spreads as needed -->
     </div>
 
     <script type="text/javascript">
@@ -41,15 +47,14 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage[0].naturalWidth;
+                var newWidth = firstPage[0].naturalWidth / 2; // The width of a single page
                 var newHeight = firstPage[0].naturalHeight;
 
-                // Update the flipbook size based on the image dimensions
                 flipbook.turn({
-                    width: newWidth * 2, // Each spread spans across two pages
+                    width: newWidth * 2, // Set the width to span two pages
                     height: newHeight,
                     autoCenter: true,
-                    display: 'double', // Display two pages (spread) at once
+                    display: 'double', // Ensure double page display for spreads
                     when: {
                         turned: function(e, page) {
                             var currentView = $(this).turn('view');
@@ -59,7 +64,6 @@
                 });
             }
 
-            // Ensure the first image is loaded before calculating sizes
             var firstPage = flipbook.find('.page img').first();
             firstPage.on('load', function() {
                 updateFlipbookSize();
@@ -68,11 +72,6 @@
             if (firstPage.prop('complete')) {
                 updateFlipbookSize();
             }
-
-            // Event listeners for flipping pages on click
-            flipbook.on('click', '.page', function() {
-                flipbook.turn('next');
-            });
 
             // Event listeners for flipping pages with arrow keys
             $(document).keydown(function(e) {

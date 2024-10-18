@@ -10,6 +10,12 @@ body {
     overflow: hidden; /* Prevent scroll bars */
 }
 
+#flipbook-container {
+    background-color: #ccc; /* Grey margin background */
+    padding: 20px; /* Space around the flipbook */
+    border-radius: 10px; /* Rounded corners for the grey margin */
+}
+
 #flipbook {
     background-color: white;
     border: 2px solid #36454F; /* Charcoal grey border */

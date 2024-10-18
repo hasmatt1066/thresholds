@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flipbook Example</title>
-
+    
     <!-- jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- turn.js Library from CDN -->
+    
+    <!-- turn.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="flipbook.css">
 </head>
 <body>
-
     <div id="flipbook">
-        <!-- First spread (cover) should not be split -->
+        <!-- First spread (cover) -->
         <div class="page cover">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
-        
+
         <!-- Remaining spreads should be split across two pages -->
         <div class="page spread">
             <div class="left-half">
@@ -42,28 +41,24 @@
         <!-- Add more pages as needed -->
     </div>
 
-    <!-- Initialize the flipbook after the page loads -->
     <script type="text/javascript">
         $(document).ready(function() {
             var flipbook = $("#flipbook");
 
-            // Debugging log to check if flipbook is initialized
-            console.log("Flipbook element:", flipbook);
-            
             function updateFlipbookSize() {
                 var firstPage = flipbook.find('.page img').first();
                 if (firstPage.length === 0) {
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage[0].naturalWidth; // Each spread spans across two pages
-                var newHeight = firstPage[0].naturalHeight;
+                
+                // Use the natural dimensions of the first image
+                var newWidth = firstPage[0].naturalWidth; // Image width
+                var newHeight = firstPage[0].naturalHeight; // Image height
 
-                // Debugging log before initializing turn.js
-                console.log("Initializing flipbook with width:", newWidth * 2, "height:", newHeight);
-
+                // Initialize the flipbook with the correct size
                 flipbook.turn({
-                    width: newWidth * 2,  // Double the width for spread
+                    width: newWidth * 2, // Set width for two-page spread
                     height: newHeight,
                     autoCenter: true,
                     display: 'double', // Ensure double display for spreads
@@ -76,7 +71,6 @@
                 });
             }
 
-            // Wait for the first image to load before setting the flipbook size
             var firstPage = flipbook.find('.page img').first();
             firstPage.on('load', function() {
                 updateFlipbookSize();
@@ -101,6 +95,5 @@
             });
         });
     </script>
-
 </body>
 </html>

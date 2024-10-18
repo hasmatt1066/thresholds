@@ -2,19 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flipbook Example</title>
-    <link rel="stylesheet" type="text/css" href="flipbook.css">
+
+    <!-- jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- turn.js Library (make sure it is version 4.1.0) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="flipbook.css">
 </head>
 <body>
+
     <div id="flipbook">
         <!-- First spread (cover) should not be split -->
         <div class="page cover">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
-
-        <!-- Spread 1: Left and Right Halves -->
+        
+        <!-- Remaining spreads should be split across two pages -->
         <div class="page spread">
             <div class="left-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
@@ -23,8 +31,6 @@
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
             </div>
         </div>
-
-        <!-- Spread 2: Left and Right Halves -->
         <div class="page spread">
             <div class="left-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
@@ -33,23 +39,28 @@
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
             </div>
         </div>
+        <!-- Add more pages as needed -->
     </div>
 
+    <!-- Initialize the flipbook after the page loads -->
     <script type="text/javascript">
         $(document).ready(function() {
             var flipbook = $("#flipbook");
 
-            // Initialize flipbook with correct dimensions
             function updateFlipbookSize() {
                 var firstPage = flipbook.find('.page img').first();
-                var newWidth = firstPage[0].naturalWidth / 2; // Each page is half the width of the spread
+                if (firstPage.length === 0) {
+                    console.error("No images found in the flipbook.");
+                    return;
+                }
+                var newWidth = firstPage[0].naturalWidth; // Each spread spans across two pages
                 var newHeight = firstPage[0].naturalHeight;
 
                 flipbook.turn({
-                    width: newWidth * 2, // Set to the full spread width
+                    width: newWidth * 2,  // Double the width for spread
                     height: newHeight,
                     autoCenter: true,
-                    display: 'double',
+                    display: 'double', // Ensure double display for spreads
                     when: {
                         turned: function(e, page) {
                             var currentView = $(this).turn('view');
@@ -59,6 +70,7 @@
                 });
             }
 
+            // Wait for the first image to load before setting the flipbook size
             var firstPage = flipbook.find('.page img').first();
             firstPage.on('load', function() {
                 updateFlipbookSize();
@@ -68,7 +80,12 @@
                 updateFlipbookSize();
             }
 
-            // Flipping pages with arrow keys
+            // Event listeners for flipping pages on click
+            flipbook.on('click', '.page', function() {
+                flipbook.turn('next');
+            });
+
+            // Event listeners for flipping pages with arrow keys
             $(document).keydown(function(e) {
                 if (e.key === "ArrowRight") {
                     flipbook.turn('next');
@@ -78,5 +95,6 @@
             });
         });
     </script>
+
 </body>
 </html>

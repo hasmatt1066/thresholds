@@ -14,7 +14,7 @@ body {
     background-color: white;
     border: 2px solid #36454F; /* Charcoal grey border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
-    width: 80%;
+    width: 90vw; /* Set relative width for scaling */
     height: auto; /* Auto height to maintain aspect ratio */
     max-height: 90vh; /* Ensure it fits within the viewport */
     margin: 20px 0; /* Add some margin for better visibility */

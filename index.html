@@ -2,87 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flipbook Example</title>
-    <link rel="stylesheet" type="text/css" href="flipbook.css"> <!-- Your CSS file -->
+    <title>Flipbook Test</title>
+    <link rel="stylesheet" type="text/css" href="flipbook.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="turn.min.js"></script> <!-- Make sure this path is correct for turn.js -->
+    <script src="turn.min.js"></script>
 </head>
 <body>
     <div id="flipbook">
-        <!-- Cover page (single) -->
-        <div class="page cover">
+        <!-- A basic two-page spread to test -->
+        <div class="page">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
-
-        <!-- First spread (split into left and right halves) -->
         <div class="page">
             <div class="left-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Left half">
             </div>
             <div class="right-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Right half">
             </div>
         </div>
-
-        <!-- Second spread -->
-        <div class="page">
-            <div class="left-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
-            </div>
-            <div class="right-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
-            </div>
-        </div>
-
-        <!-- Add more spreads as needed -->
     </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            var flipbook = $("#flipbook");
-
-            function updateFlipbookSize() {
-                var firstPage = flipbook.find('.page img').first();
-                if (firstPage.length === 0) {
-                    console.error("No images found in the flipbook.");
-                    return;
-                }
-
-                // Use naturalWidth for sizing the flipbook properly, adjust each page's width for a two-page spread
-                var newWidth = firstPage[0].naturalWidth / 2; // The width of a single page
-                var newHeight = firstPage[0].naturalHeight;
-
-                // Adjust turn.js size and settings
-                flipbook.turn({
-                    width: newWidth * 2, // Set the width to span two pages
-                    height: newHeight,
-                    autoCenter: true,
-                    display: 'double', // Ensure double page display for spreads
-                    when: {
-                        turned: function(e, page) {
-                            var currentView = $(this).turn('view');
-                            console.log('Current view: ', currentView);
-                        }
-                    }
-                });
-            }
-
-            var firstPage = flipbook.find('.page img').first();
-            firstPage.on('load', function() {
-                updateFlipbookSize();
-            });
-
-            if (firstPage.prop('complete')) {
-                updateFlipbookSize();
-            }
-
-            // Event listeners for flipping pages with arrow keys
-            $(document).keydown(function(e) {
-                if (e.key === "ArrowRight") {
-                    flipbook.turn('next');
-                } else if (e.key === "ArrowLeft") {
-                    flipbook.turn('previous');
-                }
+            $('#flipbook').turn({
+                width: 800,
+                height: 500,
+                autoCenter: true
             });
         });
     </script>

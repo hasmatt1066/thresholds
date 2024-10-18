@@ -9,27 +9,24 @@
 </head>
 <body>
     <div id="flipbook">
-        <!-- First spread (cover) should not be split -->
-        <div class="page cover">
+        <!-- First page (cover) should not be split -->
+        <div class="page">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
-        
-        <!-- Remaining spreads should be split across two pages -->
-        <div class="page spread">
-            <div class="left-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
-            </div>
-            <div class="right-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
-            </div>
+
+        <!-- Each following image should be a full-page image on its own -->
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Spread 1 Left">
         </div>
-        <div class="page spread">
-            <div class="left-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
-            </div>
-            <div class="right-half">
-                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
-            </div>
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Spread 1 Right">
+        </div>
+
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Spread 2 Left">
+        </div>
+        <div class="page">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Spread 2 Right">
         </div>
         <!-- Add more pages as needed -->
     </div>
@@ -44,14 +41,15 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
-                var newWidth = firstPage[0].naturalWidth; // Each spread spans across two pages
+                var newWidth = firstPage[0].naturalWidth;
                 var newHeight = firstPage[0].naturalHeight;
 
+                // Update the flipbook size based on the image dimensions
                 flipbook.turn({
-                    width: newWidth * 2,
+                    width: newWidth * 2, // Each spread spans across two pages
                     height: newHeight,
                     autoCenter: true,
-                    display: 'double', // Ensure double display for spreads
+                    display: 'double', // Display two pages (spread) at once
                     when: {
                         turned: function(e, page) {
                             var currentView = $(this).turn('view');
@@ -61,6 +59,7 @@
                 });
             }
 
+            // Ensure the first image is loaded before calculating sizes
             var firstPage = flipbook.find('.page img').first();
             firstPage.on('load', function() {
                 updateFlipbookSize();

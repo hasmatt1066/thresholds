@@ -8,7 +8,7 @@
     <!-- jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- turn.js Library (make sure it is version 4.1.0) -->
+    <!-- turn.js Library from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
     <!-- Link to your CSS file -->
@@ -47,6 +47,9 @@
         $(document).ready(function() {
             var flipbook = $("#flipbook");
 
+            // Debugging log to check if flipbook is initialized
+            console.log("Flipbook element:", flipbook);
+            
             function updateFlipbookSize() {
                 var firstPage = flipbook.find('.page img').first();
                 if (firstPage.length === 0) {
@@ -55,6 +58,9 @@
                 }
                 var newWidth = firstPage[0].naturalWidth; // Each spread spans across two pages
                 var newHeight = firstPage[0].naturalHeight;
+
+                // Debugging log before initializing turn.js
+                console.log("Initializing flipbook with width:", newWidth * 2, "height:", newHeight);
 
                 flipbook.turn({
                     width: newWidth * 2,  // Double the width for spread

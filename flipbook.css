@@ -27,8 +27,10 @@ body {
 }
 
 #flipbook .page img {
-    width: 100%;
+    width: 200%; /* Ensure the image spans across both halves */
     height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 0; /* Ensure the image starts at the top */
 }
 
 #flipbook .page.cover {
@@ -51,15 +53,7 @@ body {
 }
 
 #flipbook .page .right-half {
-    right: 0; /* Align right */
-}
-
-#flipbook .page .left-half img,
-#flipbook .page .right-half img {
-    width: 200%; /* Ensure the image spans across both halves */
-    height: auto;
-    position: absolute;
-    top: 0; /* Ensure the image starts at the top */
+    left: 50%; /* Align right, half of the width */
 }
 
 #flipbook .page .left-half img {

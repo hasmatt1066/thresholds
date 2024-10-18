@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Flipbook Example</title>
-    <link rel="stylesheet" type="text/css" href="flipbook.css"> <!-- Your existing CSS file -->
+    <link rel="stylesheet" type="text/css" href="flipbook.css"> <!-- Your CSS file -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="turn.min.js"></script> <!-- Make sure this path is correct for turn.js -->
 </head>
@@ -47,9 +47,12 @@
                     console.error("No images found in the flipbook.");
                     return;
                 }
+
+                // Use naturalWidth for sizing the flipbook properly, adjust each page's width for a two-page spread
                 var newWidth = firstPage[0].naturalWidth / 2; // The width of a single page
                 var newHeight = firstPage[0].naturalHeight;
 
+                // Adjust turn.js size and settings
                 flipbook.turn({
                     width: newWidth * 2, // Set the width to span two pages
                     height: newHeight,

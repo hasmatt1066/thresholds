@@ -21,7 +21,7 @@
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
 
-        <!-- Remaining spreads should be split across two pages -->
+        <!-- Remaining spreads -->
         <div class="page spread">
             <div class="left-half">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
@@ -45,40 +45,13 @@
         $(document).ready(function() {
             var flipbook = $("#flipbook");
 
-            function updateFlipbookSize() {
-                var firstPage = flipbook.find('.page img').first();
-                if (firstPage.length === 0) {
-                    console.error("No images found in the flipbook.");
-                    return;
-                }
-                
-                // Use the natural dimensions of the first image
-                var newWidth = firstPage[0].naturalWidth; // Image width
-                var newHeight = firstPage[0].naturalHeight; // Image height
-
-                // Initialize the flipbook with the correct size
-                flipbook.turn({
-                    width: newWidth * 2, // Set width for two-page spread
-                    height: newHeight,
-                    autoCenter: true,
-                    display: 'double', // Ensure double display for spreads
-                    when: {
-                        turned: function(e, page) {
-                            var currentView = $(this).turn('view');
-                            console.log('Current view: ', currentView);
-                        }
-                    }
-                });
-            }
-
-            var firstPage = flipbook.find('.page img').first();
-            firstPage.on('load', function() {
-                updateFlipbookSize();
+            // Initialize the flipbook
+            flipbook.turn({
+                width: 800, // Adjust this to your desired width
+                height: 400, // Adjust this to your desired height
+                autoCenter: true,
+                display: 'double',
             });
-
-            if (firstPage.prop('complete')) {
-                updateFlipbookSize();
-            }
 
             // Event listeners for flipping pages on click
             flipbook.on('click', '.page', function() {

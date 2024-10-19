@@ -17,7 +17,7 @@ body {
 
 .page {
     position: relative; /* Make sure the page itself is positioned */
-    width: 100%; /* Each page takes up half of the flipbook width */
+    width: 50%; /* Each page takes up half of the flipbook width */
     height: 100%; /* Make pages fill the flipbook height */
     overflow: hidden; /* Hide overflow */
 }
@@ -33,11 +33,11 @@ body {
 
 /* Clipping to show left and right halves */
 .split-left {
-    clip-path: inset(0 50% 0 0); /* Show left half */
+    clip-path: inset(0 100% 0 0); /* Show left half */
 }
 
 .split-right {
-    clip-path: inset(0 0 0 50%); /* Show right half */
+    clip-path: inset(0 0 0 100%); /* Show right half */
 }
 
 .cover img {

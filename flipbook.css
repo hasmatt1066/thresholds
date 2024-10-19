@@ -22,11 +22,16 @@ body {
     overflow: hidden; /* Prevent overflow */
 }
 
+/* Set a square aspect ratio for pages */
+.page {
+    aspect-ratio: 1; /* Ensure each page is square */
+}
+
 .page img {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    width: 200%; /* Fill double the width of the page */
+    width: 100%; /* Fill the entire page */
     height: auto; /* Maintain aspect ratio */
     transform: translate(-50%, -50%); /* Center the image */
 }

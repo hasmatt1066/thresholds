@@ -26,8 +26,8 @@ body {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    width: 100%; /* Fill the entire page width */
-    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Maintain aspect ratio */
+    height: 100%; /* Fill the entire page height */
     transform: translate(-50%, -50%); /* Center the image */
 }
 

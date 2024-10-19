@@ -25,7 +25,7 @@ body {
 
 .page img {
     position: absolute; /* Position images absolutely within the page */
-    top: 100%; /* Center vertically */
+    top: 50%; /* Center vertically */
     left: 100%; /* Center horizontally */
     width: 200%; /* Fill double the width of the page */
     height: auto; /* Maintain aspect ratio */

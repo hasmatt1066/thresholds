@@ -26,7 +26,7 @@ body {
     position: absolute; /* Position images absolutely within the page */
     top: 0; /* Align to the top */
     left: 0; /* Align to the left */
-    width: 150%; /* Fill the entire page width */
+    width: 100%; /* Fill the entire page width */
     height: 100%; /* Fill the entire page height */
     object-fit: cover; /* Maintain aspect ratio while covering the space */
 }

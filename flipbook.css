@@ -24,20 +24,20 @@ body {
 
 .page img {
     position: absolute; /* Position images absolutely within the page */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    width: auto; /* Maintain aspect ratio */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Fill the entire page width */
     height: 100%; /* Fill the entire page height */
-    transform: translate(-50%, -50%); /* Center the image */
+    object-fit: cover; /* Maintain aspect ratio while covering the space */
 }
 
 /* Clipping to show left and right halves */
 .split-left {
-    clip-path: inset(0 50% 0 50%); /* Show left half */
+    clip-path: inset(0 50% 0 0); /* Show left half */
 }
 
 .split-right {
-    clip-path: inset(0 50% 0 50%); /* Show right half */
+    clip-path: inset(0 0 0 50%); /* Show right half */
 }
 
 .cover img {

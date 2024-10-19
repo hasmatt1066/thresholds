@@ -33,11 +33,11 @@ body {
 
 /* Clipping to show left and right halves */
 .split-left {
-    clip-path: inset(0 50% 0 0); /* Show left half */
+    clip-path: inset(50% 50% 0 0); /* Show left half */
 }
 
 .split-right {
-    clip-path: inset(0 0 0 50%); /* Show right half */
+    clip-path: inset(0 0 50% 50%); /* Show right half */
 }
 
 .cover img {

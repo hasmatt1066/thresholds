@@ -16,7 +16,7 @@ body {
 }
 
 .page {
-    width: 50%; /* Each page takes half the width of the flipbook */
+    width: 100%; /* Each page takes half the width of the flipbook */
     height: 100%; /* Each page takes full height of the flipbook */
     position: relative;
     overflow: hidden; /* Prevent overflow */
@@ -25,8 +25,8 @@ body {
 
 .page img {
     position: absolute; /* Position images absolutely within the page */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 100%; /* Center vertically */
+    left: 100%; /* Center horizontally */
     width: 200%; /* Fill double the width of the page */
     height: auto; /* Maintain aspect ratio */
     transform: translate(-50%, -50%); /* Center the image */

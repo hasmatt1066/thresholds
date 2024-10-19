@@ -8,26 +8,26 @@ body {
 }
 
 .flipbook {
-    width: 80vw;
-    height: 80vh;
+    width: 80vw;               /* Width of the flipbook */
+    height: calc(80vw * (12 / 12)); /* Set height based on aspect ratio (1:1 for 12x12 inches) */
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
 .page {
-    width: 100%;
-    height: 100%;
+    width: 50%;               /* Each page takes half the width of the flipbook */
+    height: 100%;             /* Each page takes the full height */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;         /* Prevent overflow */
 }
 
 .page img {
-    width: 100%;    /* Ensure full width */
-    height: 100%;   /* Ensure full height */
-    object-fit: cover; /* Scale image to cover the area */
+    width: 100%;              /* Ensure full width */
+    height: auto;             /* Maintain aspect ratio */
+    object-fit: cover;        /* Scale image to cover the area */
 }
 
 /* Left half of the image */
@@ -41,7 +41,6 @@ body {
 }
 
 .cover img {
-    /* Cover image takes up the full frame */
     width: 100%;
-    height: auto;
+    height: auto;             /* Maintain aspect ratio */
 }

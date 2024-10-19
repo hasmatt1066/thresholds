@@ -29,18 +29,22 @@ body {
     display: block;
 }
 
-/* Styling to split the left half of the spread */
+/* Left half of the image */
 .split-left {
+    width: 100%; /* Full width of the left page */
+    height: auto;
+    object-position: left; /* Position image's left half */
     object-fit: cover;
-    width: 200%; /* Twice the width of the frame */
-    margin-left: 0; /* Left half of the image */
+    clip-path: inset(0 50% 0 0); /* Clip right half */
 }
 
-/* Styling to split the right half of the spread */
+/* Right half of the image */
 .split-right {
+    width: 100%; /* Full width of the right page */
+    height: auto;
+    object-position: right; /* Position image's right half */
     object-fit: cover;
-    width: 200%; /* Twice the width of the frame */
-    margin-left: -100%; /* Shift the image left to display the right half */
+    clip-path: inset(0 0 0 50%); /* Clip left half */
 }
 
 .cover img {

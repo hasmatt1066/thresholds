@@ -8,26 +8,32 @@ body {
 }
 
 .flipbook {
-    width: 80vw;               /* Width of the flipbook */
-    height: calc(80vw * (12 / 12)); /* Set height based on aspect ratio (1:1 for 12x12 inches) */
+    width: 80vw; /* Set width of the flipbook */
+    height: 80vw; /* Keep height the same as width to ensure a square layout */
+    max-height: 80vh; /* Set maximum height */
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
 .page {
-    width: 50%;               /* Each page takes half the width of the flipbook */
-    height: 100%;             /* Each page takes the full height */
+    width: 50%; /* Each page takes half the width of the flipbook */
+    height: 100%; /* Each page takes the full height */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;         /* Prevent overflow */
+    overflow: hidden; /* Prevent overflow */
+    position: relative; /* Position for child elements */
 }
 
 .page img {
-    width: 100%;              /* Ensure full width */
-    height: auto;             /* Maintain aspect ratio */
-    object-fit: cover;        /* Scale image to cover the area */
+    position: absolute; /* Positioning for proper alignment */
+    width: 100%; /* Full width to cover the page */
+    height: auto; /* Maintain aspect ratio */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust centering */
+    object-fit: cover; /* Scale image to cover the area */
 }
 
 /* Left half of the image */
@@ -41,6 +47,6 @@ body {
 }
 
 .cover img {
-    width: 100%;
-    height: auto;             /* Maintain aspect ratio */
+    width: 100%; /* Cover image takes up the full frame */
+    height: auto; /* Maintain aspect ratio */
 }

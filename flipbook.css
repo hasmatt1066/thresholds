@@ -25,7 +25,7 @@ body {
 .page img {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */
-    left: 100%; /* Center horizontally */
+    left: 50%; /* Center horizontally */
     width: auto; /* Maintain aspect ratio */
     height: 100%; /* Fill the entire page height */
     transform: translate(-50%, -50%); /* Center the image */
@@ -33,7 +33,7 @@ body {
 
 /* Clipping to show left and right halves */
 .split-left {
-    clip-path: inset(0 0 50% 0); /* Show left half */
+    clip-path: inset(0 50% 0 0); /* Show left half */
 }
 
 .split-right {

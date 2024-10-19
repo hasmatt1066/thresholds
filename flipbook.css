@@ -8,11 +8,10 @@ body {
 }
 
 .flipbook {
-    width: 80vw; /* Set width of the flipbook */
-    height: 80vw; /* Keep height the same as width to ensure a square layout */
-    max-height: 80vh; /* Set maximum height */
+    width: 80vmin; /* Set width of the flipbook based on the smaller viewport dimension */
+    height: 80vmin; /* Keep height the same as width for a square layout */
+    max-height: 80vh; /* Set max height */
     background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
@@ -27,12 +26,8 @@ body {
 }
 
 .page img {
-    position: absolute; /* Positioning for proper alignment */
-    width: 100%; /* Full width to cover the page */
-    height: auto; /* Maintain aspect ratio */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust centering */
+    width: 100%; /* Make image full width */
+    height: 100%; /* Make image full height */
     object-fit: cover; /* Scale image to cover the area */
 }
 
@@ -51,12 +46,12 @@ body {
     height: auto; /* Maintain aspect ratio */
 }
 
+/* Debugging borders */
 .page {
-    border: 1px solid red; /* Add a border to see the page frames */
-    background-color: lightgrey; /* Change background color to visualize */
+    border: 1px solid red; /* Show page frame */
+    background-color: lightgrey; /* Background color for visualization */
 }
 
 .page img {
-    border: 1px solid blue; /* Add a border to see the images */
+    border: 1px solid blue; /* Show image frame */
 }
-

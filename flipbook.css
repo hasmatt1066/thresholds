@@ -31,20 +31,20 @@ body {
 
 /* Left half of the image */
 .split-left {
-    width: 100%; /* Full width of the left page */
+    width: 200%; /* Double the width of the container */
     height: auto;
-    object-position: left; /* Position image's left half */
+    object-position: left; /* Show the left half of the image */
     object-fit: cover;
-    clip-path: inset(0 50% 0 0); /* Clip right half */
+    clip-path: inset(0 50% 0 0); /* Clip the right half */
 }
 
 /* Right half of the image */
 .split-right {
-    width: 100%; /* Full width of the right page */
+    width: 200%; /* Double the width of the container */
     height: auto;
-    object-position: right; /* Position image's right half */
+    object-position: right; /* Show the right half of the image */
     object-fit: cover;
-    clip-path: inset(0 0 0 50%); /* Clip left half */
+    clip-path: inset(0 0 0 50%); /* Clip the left half */
 }
 
 .cover img {

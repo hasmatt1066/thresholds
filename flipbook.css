@@ -19,7 +19,7 @@ body {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */
     left: 100%; /* Center horizontally */
-    width: 200%; /* Fill double the width of the page */
+    width: 100%; /* Fill double the width of the page */
     height: auto; /* Maintain aspect ratio */
     transform: translate(-50%, -50%); /* Center the image */
 }

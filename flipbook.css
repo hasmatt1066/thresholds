@@ -8,16 +8,11 @@ body {
 }
 
 .flipbook {
-    width: 80vmin; /* Use viewport min for responsiveness */
+    width: 80vmin; /* Make the flipbook responsive */
     height: 80vmin; /* Ensure it remains a square */
     background-color: white;
     position: relative;
     overflow: hidden;
-}
-
-.page {
-    width: 600px; /* Adjust as needed */
-    height: 600px; /* Maintain a square aspect ratio */
 }
 
 .page {
@@ -31,9 +26,8 @@ body {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    width: 100%; /* Fill the width of the page */
-    height: 100%; /* Fill the height of the page */
-    object-fit: cover; /* Ensure the image covers the entire area */
+    width: 200%; /* Fill double the width */
+    height: auto; /* Maintain aspect ratio */
     transform: translate(-50%, -50%); /* Center the image */
 }
 

@@ -15,14 +15,6 @@ body {
     overflow: hidden;
 }
 
-.page {
-    width: 100%; /* Each page takes half the width of the flipbook */
-    height: 100%; /* Each page takes full height of the flipbook */
-    position: relative;
-    overflow: hidden; /* Prevent overflow */
-    aspect-ratio: 1; /* Ensure each page is square */
-}
-
 .page img {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */

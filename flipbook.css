@@ -8,42 +8,43 @@ body {
 }
 
 .flipbook {
-    width: 80vmin; /* Set width of the flipbook based on the smaller viewport dimension */
-    height: 80vmin; /* Keep height the same as width for a square layout */
+    width: 80vmin; /* Make the flipbook responsive */
+    height: 80vmin; /* Ensure it remains a square */
     max-height: 80vh; /* Set max height */
     background-color: white;
     position: relative;
+    overflow: hidden; /* Prevent overflow */
 }
 
 .page {
     width: 50%; /* Each page takes half the width of the flipbook */
-    height: 100%; /* Each page takes the full height */
+    height: 100%; /* Each page takes the full height of the flipbook */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Prevent overflow */
-    position: relative; /* Position for child elements */
+    position: relative; /* For absolute positioning of child elements */
 }
 
 .page img {
     width: 100%; /* Make image full width */
     height: 100%; /* Make image full height */
-    object-fit: cover; /* Scale image to cover the area */
+    object-fit: cover; /* Scale the image to cover the entire frame */
 }
 
 /* Left half of the image */
 .split-left {
-    clip-path: inset(0 50% 0 0); /* Clip the right half */
+    clip-path: inset(0 50% 0 0); /* Clip to show the left half */
 }
 
 /* Right half of the image */
 .split-right {
-    clip-path: inset(0 0 0 50%); /* Clip the left half */
+    clip-path: inset(0 0 0 50%); /* Clip to show the right half */
 }
 
 .cover img {
-    width: 100%; /* Cover image takes up the full frame */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto; /* Maintain aspect ratio for cover */
 }
 
 /* Debugging borders */

@@ -1,50 +1,48 @@
 body {
     margin: 0;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #f0f0f0;
 }
 
 .flipbook {
-    width: 80vmin; /* Make the flipbook responsive */
+    width: 80vmin;  /* Use viewport min for responsiveness */
     height: 80vmin; /* Ensure it remains a square */
-    max-height: 80vh; /* Set max height */
     background-color: white;
     position: relative;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;
 }
 
 .page {
     width: 50%; /* Each page takes half the width of the flipbook */
-    height: 100%; /* Each page takes the full height of the flipbook */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%; /* Each page takes full height of the flipbook */
+    position: relative;
     overflow: hidden; /* Prevent overflow */
-    position: relative; /* For absolute positioning of child elements */
 }
 
 .page img {
-    width: 100%; /* Make image full width */
-    height: 100%; /* Make image full height */
-    object-fit: cover; /* Scale the image to cover the entire frame */
+    position: absolute; /* Position images absolutely within the page */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    width: auto; /* Keep original width */
+    height: 100%; /* Full height of the page */
+    transform: translate(-50%, -50%) scale(1.5); /* Center and scale the image */
 }
 
-/* Left half of the image */
+/* Clipping to show left and right halves */
 .split-left {
-    clip-path: inset(0 50% 0 0); /* Clip to show the left half */
+    clip-path: inset(0 50% 0 0); /* Show left half */
 }
 
-/* Right half of the image */
 .split-right {
-    clip-path: inset(0 0 0 50%); /* Clip to show the right half */
+    clip-path: inset(0 0 0 50%); /* Show right half */
 }
 
 .cover img {
     width: 100%;
-    height: auto; /* Maintain aspect ratio for cover */
+    height: auto; /* Keep aspect ratio for cover */
 }
 
 /* Debugging borders */

@@ -8,7 +8,7 @@ body {
 }
 
 .flipbook {
-    width: 80vmin;  /* Use viewport min for responsiveness */
+    width: 80vmin; /* Use viewport min for responsiveness */
     height: 80vmin; /* Ensure it remains a square */
     background-color: white;
     position: relative;
@@ -26,8 +26,9 @@ body {
     position: absolute; /* Position images absolutely within the page */
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    width: 100%; /* Full width of the page */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Fill the width of the page */
+    height: 100%; /* Fill the height of the page */
+    object-fit: cover; /* Ensure the image covers the entire area */
     transform: translate(-50%, -50%); /* Center the image */
 }
 

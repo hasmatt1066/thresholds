@@ -17,7 +17,7 @@ body {
 }
 
 .page {
-    width: 100%; /* Each page takes full width */
+    width: 100%; /* Each page should take the full flipbook width */
     height: 100%;
     display: flex;
     justify-content: center;
@@ -25,13 +25,20 @@ body {
 }
 
 .page img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 100%; /* Let the image take up the full width */
+    max-height: 100%; /* Ensure it fits within the page height */
     margin: auto;
     display: block;
 }
 
 .cover {
-    /* Style for the cover page */
+    /* Special style for cover page */
     width: 100%;
+}
+
+.spread {
+    /* Special style for spread images that span two pages */
+    object-fit: cover; /* Ensure that the image fits within its frame properly */
+    width: 200%; /* Stretch across two pages */
+    margin-left: -50%; /* Pull half of the image into the next frame */
 }

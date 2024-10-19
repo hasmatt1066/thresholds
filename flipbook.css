@@ -26,4 +26,25 @@ body {
 .page img {
     max-width: 100%;
     max-height: 100%;
+    display: block;
+}
+
+/* Styling to split the left half of the spread */
+.split-left {
+    object-fit: cover;
+    width: 200%; /* Twice the width of the frame */
+    margin-left: 0; /* Left half of the image */
+}
+
+/* Styling to split the right half of the spread */
+.split-right {
+    object-fit: cover;
+    width: 200%; /* Twice the width of the frame */
+    margin-left: -100%; /* Shift the image left to display the right half */
+}
+
+.cover img {
+    /* Cover image takes up the full frame */
+    width: 100%;
+    height: auto;
 }

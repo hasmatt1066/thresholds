@@ -16,6 +16,11 @@ body {
 }
 
 .page {
+    width: 600px; /* Adjust as needed */
+    height: 600px; /* Maintain a square aspect ratio */
+}
+
+.page {
     width: 50%; /* Each page takes half the width of the flipbook */
     height: 100%; /* Each page takes full height of the flipbook */
     position: relative;

@@ -31,18 +31,18 @@ body {
 
 /* Left half of the image */
 .split-left {
-    width: 200%; /* Double the width of the container */
-    height: auto;
-    object-position: left; /* Show the left half of the image */
+    width: 100%;  /* Now use the full width of the page */
+    height: 100%; /* Use the full height of the page */
+    object-position: left;
     object-fit: cover;
     clip-path: inset(0 50% 0 0); /* Clip the right half */
 }
 
 /* Right half of the image */
 .split-right {
-    width: 200%; /* Double the width of the container */
-    height: auto;
-    object-position: right; /* Show the right half of the image */
+    width: 100%;  /* Now use the full width of the page */
+    height: 100%; /* Use the full height of the page */
+    object-position: right;
     object-fit: cover;
     clip-path: inset(0 0 0 50%); /* Clip the left half */
 }

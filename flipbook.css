@@ -17,21 +17,21 @@ body {
 }
 
 .page {
-    width: 50%; /* Each page takes half the width of the flipbook */
+    width: 100%; /* Each page takes full width */
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    float: left; /* Ensure each page stays on the correct side */
 }
 
 .page img {
     max-width: 100%;
     max-height: 100%;
     margin: auto;
+    display: block;
 }
 
 .cover {
-    /* Cover page style */
-    width: 100%; /* The cover takes the full width */
+    /* Style for the cover page */
+    width: 100%;
 }

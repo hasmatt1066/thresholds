@@ -50,3 +50,13 @@ body {
     width: 100%; /* Cover image takes up the full frame */
     height: auto; /* Maintain aspect ratio */
 }
+
+.page {
+    border: 1px solid red; /* Add a border to see the page frames */
+    background-color: lightgrey; /* Change background color to visualize */
+}
+
+.page img {
+    border: 1px solid blue; /* Add a border to see the images */
+}
+

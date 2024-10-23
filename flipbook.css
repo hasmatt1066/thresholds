@@ -17,7 +17,7 @@ body {
 
 .page {
     position: relative;
-    width: 100%; /* Each page (left or right) takes up half of the flipbook */
+    width: 50%; /* Each page (left or right) takes up half of the flipbook */
     height: 100%; /* Make each page fill the height of the flipbook */
     overflow: hidden; /* Ensure that content outside the page bounds is hidden */
 }

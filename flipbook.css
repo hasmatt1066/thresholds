@@ -17,7 +17,7 @@ body {
 
 .page {
     position: relative;
-    width: 50%; /* Each page (left or right) takes up half of the flipbook width */
+    width: 100%; /* Each page (left or right) takes up half of the flipbook */
     height: 100%; /* Make each page fill the height of the flipbook */
     overflow: hidden; /* Ensure that content outside the page bounds is hidden */
 }
@@ -28,7 +28,6 @@ body {
     left: 0;
     width: 200%; /* Ensure the image is twice as wide as a single page */
     height: 100%; /* Fill the height of the page */
-    object-fit: cover; /* Ensure the image covers the page without distortion */
 }
 
 /* Left page shows left half of the image */
@@ -47,7 +46,6 @@ body {
 .cover img {
     width: 100%;
     height: auto; /* Ensure the cover image keeps its aspect ratio */
-    object-fit: cover; /* Ensure the cover fills the page */
 }
 
 /* Debugging borders */

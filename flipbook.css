@@ -8,41 +8,39 @@ body {
 }
 
 .flipbook {
-    width: 80vmin; /* Set the overall flipbook width */
-    height: 80vmin; /* Ensure the height matches the width for a square layout */
+    width: 80vmin;  /* Set the overall flipbook width (responsive) */
+    height: 40vmin; /* Ensure the height is half the width, to accommodate two square pages side by side */
     background-color: white;
-    position: relative;
     display: flex;
+    position: relative;
 }
 
 .page {
     position: relative;
-    width: 50%; /* Each page takes up half of the flipbook's width */
-    height: 100%; /* Each page fills the height of the flipbook, ensuring square pages */
-    overflow: hidden; /* Hide anything outside of the page area */
+    width: 50%; /* Each page is half the width of the flipbook */
+    height: 100%; /* Each page fills the height of the flipbook */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .page img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%; /* Image is twice as wide to cover both pages */
-    height: 100%; /* Maintain the square dimensions for each page */
+    width: 100%; /* Ensure the image fills the width of its container */
+    height: 100%; /* Ensure the image maintains the same height, making it square */
+    object-fit: cover; /* Ensure the image scales correctly and covers the page without distortion */
 }
 
-/* Left page shows left half of the image */
+/* Clipping to show left and right halves */
 .split-left {
-    clip-path: inset(0 50% 0 0); /* Show left half of the image */
-    transform: translateX(0); /* Align the left half */
+    clip-path: inset(0 50% 0 0); /* Show the left half of the image */
 }
 
-/* Right page shows right half of the image */
 .split-right {
-    clip-path: inset(0 0 0 50%); /* Show right half of the image */
-    transform: translateX(-50%); /* Align the right half */
+    clip-path: inset(0 0 0 50%); /* Show the right half of the image */
 }
 
-/* Cover image */
+/* Cover image settings */
 .cover img {
     width: 100%;
     height: auto; /* Keep the aspect ratio for the cover */
@@ -50,9 +48,9 @@ body {
 
 /* Debugging borders */
 .page {
-    border: 1px solid red; /* Visualize the page frames */
+    border: 1px solid red; /* Show page frame for debugging */
 }
 
 .page img {
-    border: 1px solid blue; /* Visualize the image frames */
+    border: 1px solid blue; /* Show image frame for debugging */
 }

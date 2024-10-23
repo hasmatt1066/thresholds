@@ -8,41 +8,44 @@ body {
 }
 
 .flipbook {
-    width: 80vmin; /* Make the flipbook responsive */
-    height: 80vmin; /* Ensure it remains a square */
+    width: 80vmin; /* Ensure the flipbook stays proportional */
+    height: 80vmin; /* Ensure the height is equal to the width for square pages */
     background-color: white;
     position: relative;
-    overflow: hidden;
+    display: flex;
 }
 
 .page {
-    position: relative; /* Make sure the page itself is positioned */
-    width: 50%; /* Each page takes up half of the flipbook width */
-    height: 100%; /* Make pages fill the flipbook height */
-    overflow: hidden; /* Hide overflow */
+    position: relative;
+    width: 50%; /* Each page (left or right) takes up half of the flipbook */
+    height: 100%; /* Make each page fill the height of the flipbook */
+    overflow: hidden; /* Ensure that content outside the page bounds is hidden */
 }
 
 .page img {
-    position: absolute; /* Position images absolutely within the page */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    width: 100%; /* Fill the entire page width */
-    height: 100%; /* Fill the entire page height */
-    object-fit: cover; /* Maintain aspect ratio while covering the space */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Ensure the image is twice as wide as a single page */
+    height: 100%; /* Fill the height of the page */
 }
 
-/* Clipping to show left and right halves */
+/* Left page shows left half of the image */
 .split-left {
-    clip-path: inset(0 50% 0 0); /* Show left half */
+    clip-path: inset(0 50% 0 0); /* Show the left half of the image */
+    transform: translateX(0); /* Ensure it's aligned to the left */
 }
 
+/* Right page shows right half of the image */
 .split-right {
-    clip-path: inset(0 0 0 50%); /* Show right half */
+    clip-path: inset(0 0 0 50%); /* Show the right half of the image */
+    transform: translateX(-50%); /* Shift the image to the left to show the right half */
 }
 
+/* Cover image */
 .cover img {
     width: 100%;
-    height: auto; /* Keep aspect ratio for cover */
+    height: auto; /* Ensure the cover image keeps its aspect ratio */
 }
 
 /* Debugging borders */

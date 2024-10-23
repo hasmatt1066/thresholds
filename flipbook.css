@@ -8,49 +8,51 @@ body {
 }
 
 .flipbook {
-    width: 80vmin;  /* Set the overall flipbook width (responsive) */
-    height: 40vmin; /* Ensure the height is half the width, to accommodate two square pages side by side */
+    width: 80vmin; /* Ensure the flipbook stays proportional */
+    height: 80vmin; /* Ensure the height is equal to the width for square pages */
     background-color: white;
-    display: flex;
     position: relative;
+    display: flex;
 }
 
 .page {
     position: relative;
-    width: 50%; /* Each page is half the width of the flipbook */
-    height: 100%; /* Each page fills the height of the flipbook */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    width: 50%; /* Each page (left or right) takes up half of the flipbook */
+    height: 100%; /* Make each page fill the height of the flipbook */
+    overflow: hidden; /* Ensure that content outside the page bounds is hidden */
 }
 
 .page img {
-    width: 100%; /* Ensure the image fills the width of its container */
-    height: 100%; /* Ensure the image maintains the same height, making it square */
-    object-fit: cover; /* Ensure the image scales correctly and covers the page without distortion */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Ensure the image is twice as wide as a single page */
+    height: 100%; /* Fill the height of the page */
 }
 
-/* Clipping to show left and right halves */
+/* Left page shows left half of the image */
 .split-left {
     clip-path: inset(0 50% 0 0); /* Show the left half of the image */
+    transform: translateX(0); /* Ensure it's aligned to the left */
 }
 
+/* Right page shows right half of the image */
 .split-right {
     clip-path: inset(0 0 0 50%); /* Show the right half of the image */
+    transform: translateX(-50%); /* Shift the image to the left to show the right half */
 }
 
-/* Cover image settings */
+/* Cover image */
 .cover img {
     width: 100%;
-    height: auto; /* Keep the aspect ratio for the cover */
+    height: auto; /* Ensure the cover image keeps its aspect ratio */
 }
 
 /* Debugging borders */
 .page {
-    border: 1px solid red; /* Show page frame for debugging */
+    border: 1px solid red; /* Show page frame */
 }
 
 .page img {
-    border: 1px solid blue; /* Show image frame for debugging */
+    border: 1px solid blue; /* Show image frame */
 }

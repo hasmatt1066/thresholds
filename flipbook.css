@@ -44,9 +44,14 @@ body {
 }
 
 /* Cover image should fill the entire flipbook */
+.cover {
+    width: 100%; /* Cover should take the full width of the flipbook */
+    height: 100%; /* And the full height */
+}
+
 .cover img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ensure the cover image fills the entire flipbook */
+    height: auto; /* Keep the aspect ratio of the cover image */
 }
 
 /* Debugging borders to check the page boundaries */

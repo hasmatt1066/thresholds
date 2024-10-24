@@ -28,3 +28,4 @@ $(document).ready(function() {
     // Initial call when the document loads
     adjustForCoverPage();
 });
+

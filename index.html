@@ -1,11 +1,19 @@
-<div id="flipbook" class="flipbook">
-    <!-- Title page: Full page square display -->
-    <div class="page cover">
-        <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="flipbook.css">
+    <title>Flipbook</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="flipbook" class="flipbook">
+        <!-- Cover page: Full page square display -->
+        <div class="page cover">
+            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
+        </div>
 
-    <!-- Add the class 'two-page' for the remaining spreads -->
-    <div class="flipbook two-page">
         <!-- Spread 1: Left half and right half split between two pages -->
         <div class="page spread-left">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Left Half" class="split-left">
@@ -22,4 +30,8 @@
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Right Half" class="split-right">
         </div>
     </div>
-</div>
+
+    <script src="turn.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

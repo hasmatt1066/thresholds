@@ -9,24 +9,24 @@
 </head>
 <body>
     <div id="flipbook" class="flipbook">
-        <!-- Cover page: Full page square display -->
-        <div class="page cover">
+        <!-- Title page: Full page display -->
+        <div class="page cover" data-page-type="single">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
         </div>
 
         <!-- Spread 1: Left half and right half split between two pages -->
-        <div class="page spread-left">
+        <div class="page spread-left" data-page-type="spread">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Left Half" class="split-left">
         </div>
-        <div class="page spread-right">
+        <div class="page spread-right" data-page-type="spread">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Right Half" class="split-right">
         </div>
 
         <!-- Spread 2: Left half and right half split between two pages -->
-        <div class="page spread-left">
+        <div class="page spread-left" data-page-type="spread">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Left Half" class="split-left">
         </div>
-        <div class="page spread-right">
+        <div class="page spread-right" data-page-type="spread">
             <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Right Half" class="split-right">
         </div>
     </div>
@@ -34,4 +34,5 @@
     <script src="turn.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

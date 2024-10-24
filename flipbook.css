@@ -11,27 +11,25 @@ body {
     background-color: white;
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Cover-specific styles: make the cover frame a square */
 .page.cover {
     width: 80vmin;   /* Square width */
     height: 80vmin;  /* Square height */
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     overflow: hidden; /* Ensure no overflow */
 }
 
 .page.cover img {
-    width: auto;    /* Adjust width automatically */
-    height: 100%;   /* Ensure the height fills the square */
-    max-width: 100%; /* Prevent overflow on the width */
-    position: absolute; /* Position for better centering */
-    top: 50%;       /* Center vertically */
-    left: 50%;      /* Center horizontally */
-    transform: translate(-50%, -50%); /* Translate to ensure perfect centering */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;  /* Ensure the image scales to fit within the square without distortion */
 }
 
 /* Two-page spread for the remaining pages */

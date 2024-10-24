@@ -8,11 +8,9 @@ body {
 }
 
 .flipbook {
-    position: relative;
     background-color: white;
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Cover-specific styles: make the cover frame a square */
@@ -23,7 +21,6 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: auto;  /* Center the cover */
 }
 
 .page.cover img {
@@ -32,15 +29,14 @@ body {
     object-fit: cover; /* Ensure the cover image fills the square without distortion */
 }
 
-/* Flipbook for all other pages (two-page spread) */
-.flipbook.two-page {
+/* Two-page spread for the remaining pages */
+.flipbook:not(.cover) {
     width: 160vmin;  /* Flipbook width for two-page spread */
-    height: 80vmin;  /* Half the width for two-page spread */
+    height: 80vmin;  /* Flipbook height for two-page spread */
 }
 
-/* General page styling for the two-page spreads */
 .page {
-    width: 50%;  /* Each page takes up half of the flipbook width */
+    width: 50%; /* Each page takes up half of the flipbook width for spreads */
     height: 100%; /* Each page fills the height of the flipbook */
     overflow: hidden;
     position: relative;

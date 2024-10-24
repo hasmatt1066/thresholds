@@ -8,8 +8,8 @@ body {
 }
 
 .flipbook {
-    width: 80vmin;  /* Flipbook width should be twice the height */
-    height: 40vmin; /* Ensure the flipbook height is half of the width */
+    width: 160vmin;  /* Flipbook width should be twice the height */
+    height: 80vmin; /* Ensure the flipbook height is half of the width */
     background-color: white;
     position: relative;
     display: flex;

@@ -1,24 +1,24 @@
 $(document).ready(function() {
-    // Initialize the flipbook
+    // Initialize the turn.js flipbook
     $('#flipbook').turn({
-        width: 1600,  // Default width for two-page spreads
-        height: 800,  // Default height for two-page spreads
-        autoCenter: true
-    });
-
-    // Function to adjust size for the cover page
-    function adjustForCoverPage() {
-        const flipbook = $('#flipbook');
-        const coverPage = $('.page.cover');
-
-        if (flipbook.turn('page') === 1) {
-            // If on the cover page, make the flipbook square
-            flipbook.turn('size', 800, 800); // Square size for cover
-        } else {
-            // Otherwise, use the regular dimensions for spreads
-            flipbook.turn('size', 1600, 800); // Two-page spread size
+        width: 1600,  // total width of two pages
+        height: 800,  // height for two-page spreads
+        autoCenter: true,
+        gradients: true,
+        elevation: 50,
+        pages: 6,  // total number of pages
+        display: 'single', // Set the first page to be a single page
+        when: {
+            turning: function(event, page, view) {
+                if (page === 1) {
+                    $('#flipbook').turn('display', 'single');  // Show the cover as a single page
+                } else {
+                    $('#flipbook').turn('display', 'double');  // Show the rest as a double-page spread
+                }
+            }
         }
-    }
+    });
+});
 
     // Call adjustForCoverPage whenever the page changes
     $('#flipbook').bind('turned', function(event, page) {

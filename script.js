@@ -12,8 +12,16 @@ $(document).ready(function() {
             turning: function(event, page, view) {
                 if (page === 1) {
                     $('#flipbook').turn('display', 'single');  // Show the cover as a single page
+                    $('.flipbook').css({
+                        'width': '80vmin',
+                        'height': '80vmin'
+                    });
                 } else {
                     $('#flipbook').turn('display', 'double');  // Show the rest as a double-page spread
+                    $('.flipbook').css({
+                        'width': '1600px',
+                        'height': '800px'
+                    });
                 }
             }
         }

@@ -1,30 +1,71 @@
-/* Cover-specific styles: make the cover a square */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.flipbook {
+    background-color: white;
+    position: relative;
+    display: flex;
+    width: 160vmin;  /* Full width of two pages */
+    height: 80vmin;  /* Half the width for square pages */
+}
+
+/* Make the cover a square */
 .page.cover {
-    width: 80vmin;   /* Set the cover to a square size */
-    height: 80vmin;  /* Ensure the height matches the width */
+    width: 80vmin;   /* Single square page for the cover */
+    height: 80vmin;  /* Make the height equal to the width */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: auto;  /* Center the cover on screen */
 }
 
 .page.cover img {
     width: 100%;
-    height: 100%;   /* Ensure the cover image takes up the entire square */
-    object-fit: cover; /* Prevent image distortion */
+    height: 100%;
+    object-fit: cover; /* Ensure the cover image fits the square frame */
 }
 
-/* The rest of the flipbook pages retain their split layout */
+/* General page styling for two-page spreads */
+.page {
+    width: 50%;  /* Each page takes up half of the flipbook width */
+    height: 100%; /* Pages fill the height of the flipbook */
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+}
+
 .page img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;  /* Image should be twice as wide as a single page */
-    height: 100%; /* Ensure the height is proportional to the page */
+    width: 200%;  /* Image twice as wide as a single page */
+    height: 100%; /* Image height fills the page */
 }
 
-/* Two-page spread for remaining pages */
-.page:not(.cover) {
-    width: 50%;
-    height: 100%; 
+/* Left page shows the left half of the image */
+.split-left {
+    clip-path: inset(0 50% 0 0); /* Display only the left half */
+    transform: translateX(0);
+}
+
+/* Right page shows the right half of the image */
+.split-right {
+    clip-path: inset(0 0 0 50%); /* Display only the right half */
+    transform: translateX(-50%);
+}
+
+/* Debugging borders */
+.page {
+    border: 1px solid red;
+}
+
+.page img {
+    border: 1px solid blue;
 }

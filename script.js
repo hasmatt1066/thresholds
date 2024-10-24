@@ -18,7 +18,6 @@ $(document).ready(function() {
             }
         }
     });
-});
 
     // Call adjustForCoverPage whenever the page changes
     $('#flipbook').bind('turned', function(event, page) {
@@ -28,4 +27,3 @@ $(document).ready(function() {
     // Initial call when the document loads
     adjustForCoverPage();
 });
-

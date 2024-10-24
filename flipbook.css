@@ -15,8 +15,8 @@ body {
 
 /* Cover-specific styles: make the cover frame a square */
 .page.cover {
-    width: 80vmin;   /* Make the cover frame a square */
-    height: 80vmin;  /* Ensure the height matches the width */
+    width: 80vmin;   /* Square width */
+    height: 80vmin;  /* Square height */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,24 +30,18 @@ body {
 }
 
 /* Two-page spread for the remaining pages */
-.flipbook:not(.cover) {
-    width: 160vmin;  /* Flipbook width for two-page spread */
-    height: 80vmin;  /* Flipbook height for two-page spread */
-}
-
-.page {
-    width: 50%; /* Each page takes up half of the flipbook width for spreads */
-    height: 100%; /* Each page fills the height of the flipbook */
+.page:not(.cover) {
+    width: 50%;  /* Half of the flipbook width for spreads */
+    height: 100%; /* Fill the height of the container */
     overflow: hidden;
     position: relative;
-    background-color: white;
 }
 
 .page img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;  /* Image should be twice as wide as a single page */
+    width: 200%;  /* Image width is twice as wide as the page */
     height: 100%; /* Image height should fill the page */
 }
 

@@ -8,35 +8,39 @@ body {
 }
 
 .flipbook {
-    width: 160vmin;  /* Flipbook width for the two-page spread */
-    height: 80vmin; /* Flipbook height for the two-page spread */
     background-color: white;
     position: relative;
     display: flex;
 }
 
-/* Cover specific styles */
+/* Cover-specific styles: make the cover a square */
 .page.cover {
-    width: 100vmin;  /* Make the cover frame a square */
-    height: 100vmin; /* Ensure the cover frame is a square */
+    width: 80vmin;   /* Make the cover a square */
+    height: 80vmin;  /* Keep the cover height equal to the width */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .page.cover img {
-    width: 100%;  /* Make the cover image fill the entire frame */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure it covers the entire square frame */
+    width: 100%;    /* Cover the entire square */
+    height: 100%;   /* Ensure the cover image takes up the entire square */
+    object-fit: cover; /* Make sure the image doesn't get distorted */
 }
 
 /* Two-page spread for the remaining pages */
+.flipbook:not(.cover) {
+    width: 160vmin;  /* Flipbook width for two-page spread */
+    height: 80vmin;  /* Flipbook height for two-page spread */
+}
+
 .page {
     width: 50%; /* Each page takes up half of the flipbook width for spreads */
     height: 100%; /* Each page fills the height of the flipbook */
     overflow: hidden;
     position: relative;
-    background-color: white; /* To visualize the page frames */
+    background-color: white;
 }
 
 .page img {

@@ -4,6 +4,16 @@ $(document).ready(function() {
         autoCenter: true,
         gradients: true,
         elevation: 50,
+        pages: 4, // Adjust this depending on the total number of pages
+    display: 'single', // Display the cover as a single page
+    when: {
+        turning: function(event, page, view) {
+            // After the cover, make sure two pages are shown (left and right)
+            if (page > 1) {
+                $('#flipbook').turn('display', 'double');
+            }
+        }
+    }
     });
 
     // Function to set square dimensions for the flipbook and each page

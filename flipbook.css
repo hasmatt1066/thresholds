@@ -25,10 +25,13 @@ body {
 }
 
 .page.cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* This will scale the image to fill the square without distortion */
-    object-position: center; /* Ensure the image is centered within the square */
+    width: auto;    /* Adjust width automatically */
+    height: 100%;   /* Ensure the height fills the square */
+    max-width: 100%; /* Prevent overflow on the width */
+    position: absolute; /* Position for better centering */
+    top: 50%;       /* Center vertically */
+    left: 50%;      /* Center horizontally */
+    transform: translate(-50%, -50%); /* Translate to ensure perfect centering */
 }
 
 /* Two-page spread for the remaining pages */

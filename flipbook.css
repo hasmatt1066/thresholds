@@ -7,14 +7,6 @@ body {
     background-color: #f0f0f0;
 }
 
-.flipbook {
-    width: 160vmin;  /* Flipbook width should be twice the height */
-    height: 80vmin; /* Ensure the flipbook height is half of the width */
-    background-color: white;
-    position: relative;
-    display: flex;
-}
-
 .page {
     width: 50%; /* Each page takes up half of the flipbook width */
     height: 100%; /* Each page fills the height of the flipbook */

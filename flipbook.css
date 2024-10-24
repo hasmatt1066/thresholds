@@ -8,47 +8,47 @@ body {
 }
 
 .flipbook {
-    width: 80vmin; /* Ensure the flipbook stays proportional */
-    height: 80vmin; /* Ensure the height is equal to the width for square pages */
+    width: 80vmin; /* This will make the flipbook width twice the height */
+    height: 40vmin; /* The height is half of the width to maintain 2:1 ratio */
     background-color: white;
     position: relative;
     display: flex;
 }
 
 .page {
+    width: 50%; /* Each page takes up half the width of the flipbook */
+    height: 100%; /* Each page fills the height of the flipbook (12x12 square) */
+    overflow: hidden;
     position: relative;
-    width: 50%; /* Each page (left or right) takes up half of the flipbook */
-    height: 100%; /* Make each page fill the height of the flipbook */
-    overflow: hidden; /* Ensure that content outside the page bounds is hidden */
 }
 
 .page img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%; /* Ensure the image is twice as wide as a single page */
-    height: 100%; /* Fill the height of the page */
+    width: 200%; /* Image is twice as wide as a single page (spanning both pages) */
+    height: 100%; /* The image should fill the height of the page */
 }
 
 /* Left page shows left half of the image */
 .split-left {
     clip-path: inset(0 50% 0 0); /* Show the left half of the image */
-    transform: translateX(0); /* Ensure it's aligned to the left */
+    transform: translateX(0);
 }
 
 /* Right page shows right half of the image */
 .split-right {
     clip-path: inset(0 0 0 50%); /* Show the right half of the image */
-    transform: translateX(-50%); /* Shift the image to the left to show the right half */
+    transform: translateX(-50%);
 }
 
-/* Cover image */
+/* Cover image (full-width) */
 .cover img {
     width: 100%;
-    height: auto; /* Ensure the cover image keeps its aspect ratio */
+    height: auto; /* Keep aspect ratio for the cover image */
 }
 
-/* Debugging borders */
+/* Debugging borders (optional) */
 .page {
     border: 1px solid red; /* Show page frame */
 }

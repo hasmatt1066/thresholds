@@ -1,4 +1,3 @@
-/* General body setup */
 body {
     margin: 0;
     display: flex;
@@ -8,35 +7,34 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Flipbook container */
 .flipbook {
+    background-color: white;
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* Cover-specific styles: ensure cover is a square */
+/* Cover-specific styles: make the cover frame a square */
 .page.cover {
     width: 80vmin;   /* Square width */
     height: 80vmin;  /* Square height */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    position: relative;
+    overflow: hidden; /* Ensure no overflow */
 }
 
 .page.cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the image fills the square without distortion */
-    object-position: center; /* Center the image inside the square */
+    object-fit: cover; /* This will scale the image to fill the square without distortion */
+    object-position: center; /* Ensure the image is centered within the square */
 }
 
 /* Two-page spread for the remaining pages */
 .page:not(.cover) {
-    width: 50%;  /* Each page takes up half of the flipbook width */
-    height: 100%; /* Each page fills the height of the flipbook */
+    width: 50%;  /* Half of the flipbook width for spreads */
+    height: 100%; /* Fill the height of the container */
     overflow: hidden;
     position: relative;
 }
@@ -45,7 +43,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;  /* Image should be twice as wide as a single page */
+    width: 200%;  /* Image width is twice as wide as the page */
     height: 100%; /* Image height should fill the page */
 }
 
@@ -59,4 +57,13 @@ body {
 .split-right {
     clip-path: inset(0 0 0 50%); /* Show the right half of the image */
     transform: translateX(-50%);
+}
+
+/* Debugging borders */
+.page {
+    border: 1px solid red;
+}
+
+.page img {
+    border: 1px solid blue;
 }

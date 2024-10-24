@@ -17,14 +17,17 @@ body {
 
 /* Cover specific styles */
 .page.cover {
-    width: 100%;  /* Make the cover take up the full width of the flipbook */
-    height: 100%; /* Ensure it fills the entire flipbook height */
+    width: 100vmin;  /* Make the cover frame a square */
+    height: 100vmin; /* Ensure the cover frame is a square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .page.cover img {
-    width: 100%;  /* Make the cover image fill the entire space */
-    height: auto; /* Keep aspect ratio */
-    object-fit: cover; /* Ensure it fills the square */
+    width: 100%;  /* Make the cover image fill the entire frame */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure it covers the entire square frame */
 }
 
 /* Two-page spread for the remaining pages */

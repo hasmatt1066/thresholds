@@ -8,26 +8,27 @@ body {
 }
 
 .flipbook {
-    width: 80vmin; /* This will make the flipbook width twice the height */
-    height: 40vmin; /* The height is half of the width to maintain 2:1 ratio */
+    width: 80vmin;  /* Flipbook width should be twice the height */
+    height: 40vmin; /* Ensure the flipbook height is half of the width */
     background-color: white;
     position: relative;
     display: flex;
 }
 
 .page {
-    width: 50%; /* Each page takes up half the width of the flipbook */
-    height: 100%; /* Each page fills the height of the flipbook (12x12 square) */
+    width: 50%; /* Each page takes up half of the flipbook width */
+    height: 100%; /* Each page fills the height of the flipbook */
     overflow: hidden;
     position: relative;
+    background-color: white; /* To visualize the page frames */
 }
 
 .page img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%; /* Image is twice as wide as a single page (spanning both pages) */
-    height: 100%; /* The image should fill the height of the page */
+    width: 200%;  /* Image should be twice as wide as a single page */
+    height: 100%; /* Image height should fill the page */
 }
 
 /* Left page shows left half of the image */
@@ -42,17 +43,17 @@ body {
     transform: translateX(-50%);
 }
 
-/* Cover image (full-width) */
+/* Cover image should fill the entire flipbook */
 .cover img {
     width: 100%;
-    height: auto; /* Keep aspect ratio for the cover image */
+    height: auto;
 }
 
-/* Debugging borders (optional) */
+/* Debugging borders to check the page boundaries */
 .page {
-    border: 1px solid red; /* Show page frame */
+    border: 1px solid red;
 }
 
 .page img {
-    border: 1px solid blue; /* Show image frame */
+    border: 1px solid blue;
 }

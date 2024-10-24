@@ -1,20 +1,22 @@
 $(document).ready(function() {
     // Initialize the turn.js flipbook
     $('#flipbook').turn({
-        autoCenter: true,
-        gradients: true,
-        elevation: 50,
-        pages: 5, // Adjust this depending on the total number of pages
-    display: 'single', // Display the cover as a single page
+    width: 1600,   // Width of the full flipbook
+    height: 800,   // Height of the full flipbook
+    autoCenter: true,
+    display: 'single', // The cover will display as a single page
+    pages: 4, // Number of pages
     when: {
         turning: function(event, page, view) {
-            // After the cover, make sure two pages are shown (left and right)
+            // After the cover (page 1), switch to two-page display
             if (page > 1) {
                 $('#flipbook').turn('display', 'double');
+            } else {
+                $('#flipbook').turn('display', 'single');
             }
         }
     }
-    });
+});
 
     // Function to set square dimensions for the flipbook and each page
     function setSquarePages() {

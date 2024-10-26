@@ -14,8 +14,8 @@ body {
 
 /* Cover-specific styles: make the cover a centered square */
 .page.cover {
-    width: 80vmin;
-    height: 80vmin;
+    width: 40vmin;
+    height: 40vmin;
     display: flex;
     justify-content: center;
     align-items: center;

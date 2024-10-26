@@ -1,19 +1,18 @@
 $(document).ready(function() {
-    // Initialize the turn.js flipbook
     $('#flipbook').turn({
-        width: 1600,  // Total width for two pages
-        height: 800,  // Height for two-page spreads
+        width: 1600,
+        height: 800,
         autoCenter: true,
         gradients: true,
         elevation: 50,
-        pages: 6,  // Total number of pages
+        pages: 6,
+        display: 'single',  // Set the cover as a single page
         when: {
-            turning: function(event, page, view) {
-                // Use single display mode only for the cover (page 1)
+            turning: function(event, page) {
                 if (page === 1) {
-                    $('#flipbook').turn('display', 'single');
+                    $('#flipbook').turn('display', 'single');  // Show the cover as a single centered square
                 } else {
-                    $('#flipbook').turn('display', 'double');
+                    $('#flipbook').turn('display', 'double');  // Double-page spread for remaining pages
                 }
             }
         }

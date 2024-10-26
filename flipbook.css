@@ -10,25 +10,25 @@ body {
 .flipbook {
     background-color: white;
     position: relative;
-    display: flex;
 }
 
-/* Cover-specific styles: make the cover frame a square */
+/* Cover-specific styles: make the cover a centered square */
 .page.cover {
-    width: 80vmin;   /* Square width */
-    height: 80vmin;  /* Square height */
+    width: 80vmin;  /* Square width */
+    height: 80vmin; /* Square height */
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     position: relative;
-    overflow: hidden; /* Ensure no overflow */
+    margin: auto;
 }
 
 .page.cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Scale the image to fill the square without distortion */
-    object-position: center; /* Ensure the image is centered within the square */
+    object-fit: cover;  /* Scale the image to fill the square without distortion */
+    object-position: center; /* Center the image within the square */
 }
 
 /* Two-page spread for the remaining pages */
@@ -57,13 +57,4 @@ body {
 .split-right {
     clip-path: inset(0 0 0 50%); /* Show the right half of the image */
     transform: translateX(-50%);
-}
-
-/* Debugging borders */
-.page {
-    border: 1px solid red;
-}
-
-.page img {
-    border: 1px solid blue;
 }

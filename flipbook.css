@@ -16,8 +16,8 @@ body {
 
 /* Cover-specific styles: single centered square */
 .page.cover {
-    width: 80vmin;      /* Ensure square dimensions */
-    height: 80vmin;
+    width: 80vmin !important;   /* Ensure square dimensions */
+    height: 80vmin !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,8 +25,8 @@ body {
 }
 
 .page.cover img {
-    width: 100%;      /* Cover the square fully */
-    height: 100%;
+    width: 100% !important;   /* Cover the square fully */
+    height: 100% !important;
     object-fit: cover;
 }
 
@@ -44,15 +44,6 @@ body {
     left: 0;
     width: 200%;     /* Image width spans two pages */
     height: 100%;
-}
-
-/* Debugging borders */
-.page {
-    border: 1px solid red;
-}
-
-.page img {
-    border: 1px solid blue;
 }
 
 /* Left page shows left half of the image */

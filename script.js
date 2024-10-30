@@ -1,28 +1,29 @@
 $(document).ready(function() {
     // Initialize the flipbook
     $('#flipbook').turn({
-        width: 1600,          // Full width for two-page spreads
-        height: 800,          // Height for spreads
+        width: 1600,
+        height: 800,
         autoCenter: true,
-        display: 'single',    // Start with single page display for cover
-        pages: 6,             // Total pages
+        display: 'single', // Start with single page for cover
+        pages: 6,
         when: {
             turning: function(event, page) {
                 if (page === 1) {
-                    $('#flipbook').turn('display', 'single');  // Show the cover as a single page
+                    $('#flipbook').turn('display', 'single'); // Show cover as a single page
                 } else {
-                    $('#flipbook').turn('display', 'double');  // Show spreads as double pages
+                    $('#flipbook').turn('display', 'double'); // Show spreads as double pages
+                    $('.page:not(.cover)').css('display', 'block'); // Show other pages after the cover
                 }
             },
             turned: function(event, page) {
                 if (page === 1) {
                     $('.page.cover').css({
-                        width: '80vmin',
-                        height: '80vmin',
                         display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
+                        width: '80vmin',
+                        height: '80vmin'
                     });
+                } else {
+                    $('.page.cover').css('display', 'none'); // Hide cover after flipping
                 }
             }
         }

@@ -13,6 +13,17 @@ $(document).ready(function() {
                 } else {
                     $('#flipbook').turn('display', 'double');  // Show spreads as double pages
                 }
+            },
+            turned: function(event, page) {
+                if (page === 1) {
+                    $('.page.cover').css({
+                        width: '80vmin',
+                        height: '80vmin',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    });
+                }
             }
         }
     });

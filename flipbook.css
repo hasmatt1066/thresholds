@@ -21,48 +21,35 @@ body {
     background-color: white;
 }
 
-#flipbook .hard {
+.cover {
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.hard img {
+.cover img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
-.page-spread {
+.double-page {
+    background-color: white;
     overflow: hidden;
     position: relative;
 }
 
-.page-spread.left {
-    background-color: white;
-}
-
-.page-spread.right {
-    background-color: white;
-}
-
-/* Left pages show the left half of the spread */
-.page-spread.left .spread-img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    max-height: 100%;
-    transform: translateX(50%);
-    object-fit: cover;
-}
-
-/* Right pages show the right half of the spread */
-.page-spread.right .spread-img {
+.double-page .spread-img {
     position: absolute;
     top: 0;
     left: 0;
-    max-height: 100%;
-    transform: translateX(-50%);
+    width: 200%; /* Image is twice the width of a single page */
+    height: 100%;
     object-fit: cover;
+}
+
+/* When page is on the right side */
+.double-page.even .spread-img {
+    left: -100%; /* Move image left to show right half */
 }

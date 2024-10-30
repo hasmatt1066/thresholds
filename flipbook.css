@@ -7,13 +7,16 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Flipbook Container */
+/* Flipbook container */
 .flipbook {
     position: relative;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Cover Page: centered square */
+/* Cover page styles */
 .page.cover {
     width: 80vmin;
     height: 80vmin;
@@ -21,9 +24,8 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    z-index: 10; /* Ensure cover is on top */
+    z-index: 10;
     position: relative;
-    margin: auto;
 }
 
 .page.cover img {
@@ -38,12 +40,12 @@ body {
     display: none;
 }
 
-/* Spread layout for pages after cover */
+/* Spread page layout */
 .page.spread-left, .page.spread-right {
     width: 50%;
     height: 100%;
     position: relative;
-    display: block; /* Enable after cover page */
+    display: block;
 }
 
 .page img {

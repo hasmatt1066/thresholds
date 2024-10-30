@@ -1,58 +1,71 @@
+/* flipbook.css */
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-}
-
-.flipbook {
-    background-color: white;
-    position: relative;
-}
-
-/* Cover-specific styles: make the cover a centered square */
-.page.cover {
-    width: 40vmin;
-    height: 40vmin;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+    align-items: center; /* Center the flipbook vertically */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scroll bars */
 }
 
-.page.cover img {
+#flipbook-container {
+    background-color: #ccc; /* Grey margin background */
+    padding: 20px; /* Space around the flipbook */
+    border-radius: 10px; /* Rounded corners for the grey margin */
+}
+
+#flipbook {
+    background-color: white;
+    border: 2px solid #36454F; /* Charcoal grey border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    width: 800px; /* Set width to match JavaScript */
+    height: 400px; /* Set height to match JavaScript */
+    position: relative; /* Ensure correct positioning */
+}
+
+#flipbook .page {
+    overflow: hidden;
+    position: relative; /* Enable positioning of child elements */
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
 }
 
-/* Two-page spread for the remaining pages */
-.page:not(.cover) {
+#flipbook .page img {
+    width: 200%; /* Ensure the image spans across both halves */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 0; /* Ensure the image starts at the top */
+}
+
+#flipbook .page.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the cover page */
+}
+
+#flipbook .page .left-half,
+#flipbook .page .right-half {
     width: 50%;
     height: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-.page img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
+    top: 0; /* Start from the top */
+    overflow: hidden; /* Ensure proper clipping */
 }
 
-/* Left page shows left half of the image */
-.split-left {
-    clip-path: inset(0 50% 0 0);
+#flipbook .page .left-half {
+    left: 0; /* Align left */
 }
 
-/* Right page shows right half of the image */
-.split-right {
-    clip-path: inset(0 0 0 50%);
-    transform: translateX(-50%);
+#flipbook .page .right-half {
+    left: 50%; /* Align right, half of the width */
+}
+
+#flipbook .page .left-half img {
+    left: 0; /* Position the left half image correctly */
+}
+
+#flipbook .page .right-half img {
+    left: -100%; /* Shift the right half image to the left */
 }

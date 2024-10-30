@@ -1,30 +1,39 @@
+/* script.js */
 $(document).ready(function() {
+    // Get the window dimensions
+    const windowWidth = $(window).width();
+    const windowHeight = $(window).height();
+    
+    // Calculate the book dimensions
+    // Use square dimensions for the cover
+    const coverSize = Math.min(windowHeight * 0.8, windowWidth * 0.4);
+    
+    // Set up the flipbook
     $('#flipbook').turn({
-        width: 1600,
-        height: 800,
+        width: coverSize * 2,
+        height: coverSize,
         autoCenter: true,
-        display: 'single', // Start with single page for cover
-        pages: 6,
+        display: 'double',
+        acceleration: true,
+        gradients: true,
+        elevation: 50,
         when: {
-            turning: function(event, page) {
+            turning: function(event, page, view) {
                 if (page === 1) {
-                    $('#flipbook').turn('display', 'single'); // Keep cover as single
+                    // Adjust size for cover page if needed
                 } else {
-                    $('#flipbook').turn('display', 'double'); // Switch to double for spreads
-                    $('.page:not(.cover)').css('display', 'block'); // Show non-cover pages
-                }
-            },
-            turned: function(event, page) {
-                if (page === 1) {
-                    $('.page.cover').css({
-                        width: '80vmin',
-                        height: '80vmin',
-                        display: 'flex'
-                    });
-                } else {
-                    $('.page.cover').hide(); // Hide cover on page flip
+                    // Handle spread pages
                 }
             }
         }
+    });
+    
+    // Handle window resize
+    $(window).resize(function() {
+        const newWindowWidth = $(window).width();
+        const newWindowHeight = $(window).height();
+        const newCoverSize = Math.min(newWindowHeight * 0.8, newWindowWidth * 0.4);
+        
+        $('#flipbook').turn('size', newCoverSize * 2, newCoverSize);
     });
 });

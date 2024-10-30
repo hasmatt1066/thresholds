@@ -1,65 +1,68 @@
+/* flipbook.css */
 body {
     margin: 0;
+    padding: 0;
+    background: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    min-height: 100vh;
 }
 
-/* Flipbook container */
-.flipbook {
-    position: relative;
+.container {
+    margin: 0 auto;
+}
+
+#flipbook {
+    margin: 0 auto;
+}
+
+#flipbook .page {
     background-color: white;
+}
+
+#flipbook .hard {
+    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Cover page styles */
-.page.cover {
-    width: 80vmin;
-    height: 80vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hard img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.page-spread {
     overflow: hidden;
-    z-index: 10;
     position: relative;
 }
 
-.page.cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+.page-spread.left {
+    background-color: white;
 }
 
-/* Hide non-cover pages initially */
-.page:not(.cover) {
-    display: none;
+.page-spread.right {
+    background-color: white;
 }
 
-/* Spread page layout */
-.page.spread-left, .page.spread-right {
-    width: 50%;
-    height: 100%;
-    position: relative;
-    display: block;
-}
-
-.page img {
-    width: 200%; /* Double width for clipping */
-    height: 100%;
+/* Left pages show the left half of the spread */
+.page-spread.left .spread-img {
     position: absolute;
+    top: 0;
+    right: 0;
+    max-height: 100%;
+    transform: translateX(50%);
+    object-fit: cover;
 }
 
-/* Left and right page clipping */
-.split-left {
-    clip-path: inset(0 50% 0 0);
-}
-
-.split-right {
-    clip-path: inset(0 0 0 50%);
+/* Right pages show the right half of the spread */
+.page-spread.right .spread-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 100%;
     transform: translateX(-50%);
+    object-fit: cover;
 }

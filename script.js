@@ -17,13 +17,16 @@ $(document).ready(function() {
         acceleration: true,
         gradients: true,
         elevation: 50,
+        page: 1,
         when: {
             turning: function(event, page, view) {
-                if (page === 1) {
-                    // Adjust size for cover page if needed
-                } else {
-                    // Handle spread pages
-                }
+                // Add 'even' class to pages on the right side
+                $('.double-page').removeClass('even');
+                $('.double-page').each(function() {
+                    if ($(this).turn('page') % 2 === 0) {
+                        $(this).addClass('even');
+                    }
+                });
             }
         }
     });

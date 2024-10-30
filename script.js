@@ -19,14 +19,8 @@ $(document).ready(function() {
         elevation: 50,
         page: 1,
         when: {
-            turning: function(event, page, view) {
-                // Add 'even' class to pages on the right side
-                $('.double-page').removeClass('even');
-                $('.double-page').each(function() {
-                    if ($(this).turn('page') % 2 === 0) {
-                        $(this).addClass('even');
-                    }
-                });
+            turned: function(event, page, view) {
+                // Any additional handling after page turn
             }
         }
     });
@@ -39,4 +33,3 @@ $(document).ready(function() {
         
         $('#flipbook').turn('size', newCoverSize * 2, newCoverSize);
     });
-});

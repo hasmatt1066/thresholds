@@ -1,28 +1,33 @@
 $(document).ready(function() {
+    // Initialize turn.js with autoCenter enabled
     $('#flipbook').turn({
         width: 1600,
         height: 800,
-        autoCenter: true,
-        display: 'single', // Set cover as single page
+        autoCenter: true,   // Center the flipbook on the screen
+        display: 'single',  // Start with single-page display for cover
         pages: 6,
         when: {
             turning: function(event, page) {
+                // Switch to double-page spreads after the cover page
                 if (page === 1) {
-                    $('#flipbook').turn('display', 'single'); // Cover page as single
+                    $('#flipbook').turn('display', 'single');
                 } else {
-                    $('#flipbook').turn('display', 'double'); // Set spreads to double pages
-                    $('.page:not(.cover)').css('display', 'block'); // Show rest after cover
+                    $('#flipbook').turn('display', 'double');
                 }
             },
             turned: function(event, page) {
                 if (page === 1) {
+                    // Ensure the cover page is shown as a centered square
                     $('.page.cover').css({
-                        display: 'flex',
                         width: '80vmin',
-                        height: '80vmin'
+                        height: '80vmin',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                     });
                 } else {
-                    $('.page.cover').hide(); // Hide cover on page turn
+                    // Hide the cover page after turning
+                    $('.page.cover').hide();
                 }
             }
         }

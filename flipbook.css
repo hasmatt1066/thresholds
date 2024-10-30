@@ -1,71 +1,54 @@
-/* flipbook.css */
+/* Base flipbook container styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center the flipbook vertically */
+    align-items: center;
     height: 100vh;
-    margin: 0;
-    overflow: hidden; /* Prevent scroll bars */
-}
-
-#flipbook-container {
-    background-color: #ccc; /* Grey margin background */
-    padding: 20px; /* Space around the flipbook */
-    border-radius: 10px; /* Rounded corners for the grey margin */
+    background-color: #f0f0f0;
 }
 
 #flipbook {
-    background-color: white;
-    border: 2px solid #36454F; /* Charcoal grey border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
-    width: 800px; /* Set width to match JavaScript */
-    height: 400px; /* Set height to match JavaScript */
-    position: relative; /* Ensure correct positioning */
-}
-
-#flipbook .page {
-    overflow: hidden;
-    position: relative; /* Enable positioning of child elements */
-    width: 100%;
-    height: 100%;
-}
-
-#flipbook .page img {
-    width: 200%; /* Ensure the image spans across both halves */
-    height: auto; /* Maintain aspect ratio */
-    position: absolute;
-    top: 0; /* Ensure the image starts at the top */
-}
-
-#flipbook .page.cover {
     display: flex;
     justify-content: center;
-    align-items: center; /* Center the cover page */
+    align-items: center;
+    background-color: white;
 }
 
-#flipbook .page .left-half,
-#flipbook .page .right-half {
-    width: 50%;
+/* Cover page styling */
+.page.cover {
+    width: 80vmin;   /* Makes the cover a square */
+    height: 80vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.page.cover img {
+    width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0; /* Start from the top */
-    overflow: hidden; /* Ensure proper clipping */
+    object-fit: cover;    /* Scale image to cover square */
+    object-position: center;  /* Center the image within the square */
 }
 
-#flipbook .page .left-half {
-    left: 0; /* Align left */
+/* Spread pages styling */
+.page:not(.cover) {
+    width: 50%;  /* Each spread page is half of the double-page spread */
+    height: 100%;
+    overflow: hidden;
+    background-color: white;
 }
 
-#flipbook .page .right-half {
-    left: 50%; /* Align right, half of the width */
+.split-left img, .split-right img {
+    width: 200%;    /* Ensures the image width covers both pages */
+    height: 100%;   /* Fills the height of the page */
 }
 
-#flipbook .page .left-half img {
-    left: 0; /* Position the left half image correctly */
+/* Debugging borders to verify */
+.page {
+    border: 1px solid red;
 }
-
-#flipbook .page .right-half img {
-    left: -100%; /* Shift the right half image to the left */
+.page img {
+    border: 1px solid blue;
 }

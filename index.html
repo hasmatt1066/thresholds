@@ -3,35 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="flipbook.css">
-    <title>Flipbook</title>
+    <title>Flipbook Example</title>
+    
+    <!-- jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- turn.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="flipbook.css">
 </head>
 <body>
-    <div id="flipbook" class="flipbook">
-        <!-- Title page: Full page display -->
-        <div class="page cover">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
-        </div>
+    <div id="flipbook-container">
+        <div id="flipbook">
+            <!-- First spread (cover) -->
+            <div class="page cover">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
+            </div>
 
-        <!-- Spread 1: Left half and right half split between two pages -->
-        <div class="page spread-left">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Left Half" class="split-left">
-        </div>
-        <div class="page spread-right">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Right Half" class="split-right">
-        </div>
-
-        <!-- Spread 2: Left half and right half split between two pages -->
-        <div class="page spread-left">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Left Half" class="split-left">
-        </div>
-        <div class="page spread-right">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Right Half" class="split-right">
+            <!-- Remaining spreads -->
+            <div class="page spread">
+                <div class="left-half">
+                    <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Left">
+                </div>
+                <div class="right-half">
+                    <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Page 2 Right">
+                </div>
+            </div>
+            <div class="page spread">
+                <div class="left-half">
+                    <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Left">
+                </div>
+                <div class="right-half">
+                    <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Page 3 Right">
+                </div>
+            </div>
+            <!-- Add more pages as needed -->
         </div>
     </div>
 
-    <script src="turn.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var flipbook = $("#flipbook");
+
+            // Initialize the flipbook
+            flipbook.turn({
+                width: 800, // Adjust to your desired width
+                height: 400, // Adjust to your desired height
+                autoCenter: true,
+                display: 'double',
+            });
+
+            // Event listeners for flipping pages on click
+            flipbook.on('click', '.page', function() {
+                flipbook.turn('next');
+            });
+
+            // Event listeners for flipping pages with arrow keys
+            $(document).keydown(function(e) {
+                if (e.key === "ArrowRight") {
+                    flipbook.turn('next');
+                } else if (e.key === "ArrowLeft") {
+                    flipbook.turn('previous');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -21,6 +21,9 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    z-index: 10; /* Ensure cover is on top */
+    position: relative;
+    margin: auto;
 }
 
 .page.cover img {
@@ -30,18 +33,21 @@ body {
     object-position: center;
 }
 
-/* Subsequent Spread Pages */
+/* Hide non-cover pages initially */
 .page:not(.cover) {
-    width: 50%;       /* Each page fills half of the spread */
-    height: 100%;     /* Full height */
-    display: block;   /* Ensure display for all non-cover pages */
-    position: relative;
-    overflow: hidden;
+    display: none;
 }
 
-/* Image fills the page */
+/* Spread layout for pages after cover */
+.page.spread-left, .page.spread-right {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: block; /* Enable after cover page */
+}
+
 .page img {
-    width: 200%;      /* Double width to allow for clipping */
+    width: 200%; /* Double width for clipping */
     height: 100%;
     position: absolute;
 }

@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thresholds - Digital Artbook</title>
     <link rel="stylesheet" href="flipbook.css">
+    <!-- Load jQuery from CDN with local fallback -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="turn.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="jquery.min.js"><\/script>');
+        }
+    </script>
+    <!-- Load turn.js -->
+    <script src="turn.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div id="flipbook">
+        <div id="flipbook" class="flipbook">
             <!-- Cover page -->
-            <div class="hard cover">
+            <div class="hard">
                 <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
             </div>
             

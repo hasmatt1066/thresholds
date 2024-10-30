@@ -7,16 +7,13 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Center the flipbook */
+/* Flipbook container */
 .flipbook {
     position: relative;
-    display: flex;
     background-color: white;
-    justify-content: center; /* Center contents */
-    align-items: center;
 }
 
-/* Cover-specific styles: single centered square */
+/* Cover Page */
 .page.cover {
     width: 80vmin;
     height: 80vmin;
@@ -24,8 +21,9 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    position: absolute; /* Position absolute to center in the viewport */
-    z-index: 10;        /* Place it above other pages */
+    position: absolute;
+    z-index: 10;
+    margin: auto; /* Center in the viewport */
 }
 
 .page.cover img {
@@ -34,28 +32,26 @@ body {
     object-fit: cover;
 }
 
-/* Hide pages behind the cover on initial load */
+/* Hide all other pages initially */
 .page:not(.cover) {
     display: none;
 }
 
-/* Two-page spread setup for subsequent pages */
+/* Two-page spread for following pages */
 .page.spread-left, .page.spread-right {
-    width: 50%;      /* Each page takes half the width for spreads */
+    width: 50%;
     height: 100%;
-    overflow: hidden;
     position: relative;
-    display: block; /* Show only when not the cover */
+    display: block; /* Enable only after cover page */
 }
 
 .page img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
+    width: 200%;  /* Double the width to allow half to be shown */
     height: 100%;
+    position: absolute;
 }
 
+/* Left and right page clipping */
 .split-left {
     clip-path: inset(0 50% 0 0);
 }

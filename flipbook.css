@@ -1,4 +1,3 @@
-/* Base flipbook container styling */
 body {
     margin: 0;
     display: flex;
@@ -8,16 +7,16 @@ body {
     background-color: #f0f0f0;
 }
 
-#flipbook {
+/* Flipbook container */
+.flipbook {
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: white;
 }
 
-/* Cover page styling */
+/* Cover-specific styles: single centered square */
 .page.cover {
-    width: 80vmin;   /* Makes the cover a square */
+    width: 80vmin;      /* Ensure square dimensions */
     height: 80vmin;
     display: flex;
     justify-content: center;
@@ -26,29 +25,44 @@ body {
 }
 
 .page.cover img {
-    width: 100%;
+    width: 100%;      /* Cover the square fully */
     height: 100%;
-    object-fit: cover;    /* Scale image to cover square */
-    object-position: center;  /* Center the image within the square */
+    object-fit: cover;
 }
 
-/* Spread pages styling */
+/* Two-page spread setup for subsequent pages */
 .page:not(.cover) {
-    width: 50%;  /* Each spread page is half of the double-page spread */
-    height: 100%;
+    width: 50%;      /* Each page is half of the full width for spreads */
+    height: 100%;    /* Full height */
     overflow: hidden;
-    background-color: white;
+    position: relative;
 }
 
-.split-left img, .split-right img {
-    width: 200%;    /* Ensures the image width covers both pages */
-    height: 100%;   /* Fills the height of the page */
+.page img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;     /* Image width spans two pages */
+    height: 100%;
 }
 
-/* Debugging borders to verify */
+/* Debugging borders */
 .page {
     border: 1px solid red;
 }
+
 .page img {
     border: 1px solid blue;
+}
+
+/* Left page shows left half of the image */
+.split-left {
+    clip-path: inset(0 50% 0 0);
+    transform: translateX(0);
+}
+
+/* Right page shows right half of the image */
+.split-right {
+    clip-path: inset(0 0 0 50%);
+    transform: translateX(-50%);
 }

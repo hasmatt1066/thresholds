@@ -7,53 +7,59 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Flipbook container */
+/* Center the flipbook */
 .flipbook {
     position: relative;
     display: flex;
     background-color: white;
+    justify-content: center; /* Center contents */
+    align-items: center;
 }
 
 /* Cover-specific styles: single centered square */
 .page.cover {
-    width: 80vmin !important;   /* Ensure square dimensions */
-    height: 80vmin !important;
+    width: 80vmin;
+    height: 80vmin;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: absolute; /* Position absolute to center in the viewport */
+    z-index: 10;        /* Place it above other pages */
 }
 
 .page.cover img {
-    width: 100% !important;   /* Cover the square fully */
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-/* Two-page spread setup for subsequent pages */
+/* Hide pages behind the cover on initial load */
 .page:not(.cover) {
-    width: 50%;      /* Each page is half of the full width for spreads */
-    height: 100%;    /* Full height */
+    display: none;
+}
+
+/* Two-page spread setup for subsequent pages */
+.page.spread-left, .page.spread-right {
+    width: 50%;      /* Each page takes half the width for spreads */
+    height: 100%;
     overflow: hidden;
     position: relative;
+    display: block; /* Show only when not the cover */
 }
 
 .page img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;     /* Image width spans two pages */
+    width: 200%;
     height: 100%;
 }
 
-/* Left page shows left half of the image */
 .split-left {
     clip-path: inset(0 50% 0 0);
-    transform: translateX(0);
 }
 
-/* Right page shows right half of the image */
 .split-right {
     clip-path: inset(0 0 0 50%);
-    transform: translateX(-50%);
 }

@@ -1,37 +1,41 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thresholds - Digital Artbook</title>
     <link rel="stylesheet" href="flipbook.css">
-    <title>Flipbook</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="turn.js"></script>
 </head>
 <body>
-    <div id="flipbook" class="flipbook">
-        <!-- Cover page -->
-        <div class="page cover">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
-        </div>
-
-        <!-- Spread 1: Left and right pages -->
-        <div class="page spread-left">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Left Half" class="split-left">
-        </div>
-        <div class="page spread-right">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Right Half" class="split-right">
-        </div>
-
-        <!-- Additional spreads as needed -->
-        <div class="page spread-left">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Left Half" class="split-left">
-        </div>
-        <div class="page spread-right">
-            <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Right Half" class="split-right">
+    <div class="container">
+        <div id="flipbook">
+            <!-- Cover page -->
+            <div class="hard">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover.jpg" alt="Cover">
+            </div>
+            <!-- Blank back of cover -->
+            <div class="hard"></div>
+            
+            <!-- Pages 2-3 spread -->
+            <div class="page-spread left">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Pages 2-3" class="spread-img">
+            </div>
+            <div class="page-spread right">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover2.jpg" alt="Pages 2-3" class="spread-img">
+            </div>
+            
+            <!-- Pages 4-5 spread -->
+            <div class="page-spread left">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Pages 4-5" class="spread-img">
+            </div>
+            <div class="page-spread right">
+                <img src="Thresholds jpg spreads/Thresholds Final Page Spreads with Cover3.jpg" alt="Pages 4-5" class="spread-img">
+            </div>
         </div>
     </div>
-
-    <script src="turn.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

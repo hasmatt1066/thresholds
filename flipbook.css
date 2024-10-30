@@ -34,22 +34,31 @@ body {
     object-fit: contain;
 }
 
-.double-page {
-    background-color: white;
+.spread-left, .spread-right {
+    background: white;
     overflow: hidden;
-    position: relative;
 }
 
-.double-page .spread-img {
+.spread-wrapper {
+    position: relative;
+    width: 200%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.spread-left .spread-wrapper {
+    right: 0;
+}
+
+.spread-right .spread-wrapper {
+    right: 100%;
+}
+
+.spread-left .spread-wrapper img,
+.spread-right .spread-wrapper img {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 200%; /* Image is twice the width of a single page */
+    width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-/* When page is on the right side */
-.double-page.even .spread-img {
-    left: -100%; /* Move image left to show right half */
 }

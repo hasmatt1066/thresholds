@@ -10,14 +10,14 @@ body {
 }
 
 .container {
-    position: relative; /* Make the container relative to position overlay */
+    position: relative; /* Make the container relative for positioning overlay */
     margin: 0 auto;
     padding: 20px;
     width: 100%; /* Ensure it takes full width */
 }
 
 .overlay-text {
-    position: absolute; /* Absolute positioning for correct placement */
+    position: absolute; /* Position overlay relative to container */
     left: 0; /* Align to the left */
     top: 50%; /* Center vertically */
     transform: translateY(-50%); /* Adjust vertical position */
@@ -39,9 +39,7 @@ body {
 }
 
 .flipbook .page {
-    background-color: white;
-    transform-style: preserve-3d; /* Enable 3D effect for children */
-    transition: transform 0.3s ease; /* Smooth transition for transformations */
+    background-color: white; /* Keep white background for pages */
 }
 
 .hard {
@@ -64,17 +62,17 @@ body {
 
 .spread-wrapper {
     position: relative;
-    width: 100%; /* Keep the width at 100% */
+    width: 100%; /* Set width to 100% for no gap issues */
     height: 100%;
     overflow: hidden;
 }
 
 .spread-left .spread-wrapper {
-    right: 0;
+    right: 0; /* Adjust as needed for proper alignment */
 }
 
 .spread-right .spread-wrapper {
-    right: 100%;
+    right: 100%; /* Align as needed */
 }
 
 .spread-left .spread-wrapper img,
@@ -88,10 +86,5 @@ body {
 
 /* Add visual feedback for page corners */
 .flipbook .page-wrapper {
-    cursor: pointer;
-}
-
-/* Styles for corner animations */
-.flipbook .page:hover {
-    transform: rotateY(5deg); /* Slight fold effect on hover */
+    cursor: pointer; /* Change cursor to pointer for clickable areas */
 }

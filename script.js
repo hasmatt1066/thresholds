@@ -14,6 +14,7 @@ $(document).ready(function() {
     const windowWidth = $(window).width();
     const windowHeight = $(window).height();
     const coverSize = Math.min(windowHeight * 0.8, windowWidth * 0.4);
+    const totalPages = $flipbook.turn('pages'); // Get total number of pages
 
     try {
         $flipbook.turn({
@@ -68,8 +69,12 @@ $(document).ready(function() {
             const flipbookOffset = $flipbook.offset();
             const flipbookWidth = $flipbook.width();
             const clickPositionX = event.pageX - flipbookOffset.left;
+            const currentPage = $flipbook.turn('current');
 
-            if (clickPositionX < flipbookWidth / 2) {
+            if (currentPage === totalPages && clickPositionX > flipbookWidth / 2) {
+                // If on the last page and clicking right, go back to the cover
+                $flipbook.turn('page', 1); // Go back to cover page
+            } else if (clickPositionX < flipbookWidth / 2) {
                 $flipbook.turn("previous");
             } else {
                 $flipbook.turn("next");
@@ -78,12 +83,17 @@ $(document).ready(function() {
 
         // Add keyboard navigation
         $(document).keydown(function(e) {
+            const currentPage = $flipbook.turn('current');
             switch(e.keyCode) {
                 case 37: // left arrow
                     $flipbook.turn('previous');
                     break;
                 case 39: // right arrow
-                    $flipbook.turn('next');
+                    if (currentPage === totalPages) {
+                        $flipbook.turn('page', 1); // Go back to cover page if on last page
+                    } else {
+                        $flipbook.turn('next');
+                    }
                     break;
             }
             // Fade out overlay on any navigation (keyboard or click)
@@ -132,4 +142,3 @@ $(document).ready(function() {
         $flipbook.turn('size', newCoverSize * 2, newCoverSize);
     });
 });
-

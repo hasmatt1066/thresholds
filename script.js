@@ -71,14 +71,21 @@ $(document).ready(function() {
             const clickPositionX = event.pageX - flipbookOffset.left;
             const currentPage = $flipbook.turn('current');
 
-            if (currentPage === totalPages && clickPositionX > flipbookWidth / 2) {
-                // If on the last page and clicking right, go back to the cover
-                $flipbook.turn('page', 1); // Go back to cover page
-            } else if (clickPositionX < flipbookWidth / 2) {
+            if (clickPositionX < flipbookWidth / 2) {
+                // Navigate to the previous page
                 $flipbook.turn("previous");
             } else {
-                $flipbook.turn("next");
+                // Check if on the last page
+                if (currentPage === totalPages) {
+                    // Go back to cover page if on last page
+                    $flipbook.turn('page', 1); // Go back to cover page
+                } else {
+                    // Navigate to the next page
+                    $flipbook.turn("next");
+                }
             }
+            // Fade out overlay regardless of navigation
+            $overlay.fadeOut();
         });
 
         // Add keyboard navigation
@@ -96,8 +103,8 @@ $(document).ready(function() {
                     }
                     break;
             }
-            // Fade out overlay on any navigation (keyboard or click)
-            if ($flipbook.turn('current') !== 1) {
+            // Fade out overlay when navigating away from cover
+            if (currentPage !== 1) {
                 $overlay.fadeOut();
             }
         });

@@ -85,32 +85,34 @@ $(document).ready(function() {
             const mouseX = event.pageX - flipbookOffset.left;
             const mouseY = event.pageY - flipbookOffset.top;
 
-            // Check proximity to corners and apply animations
-            handleCornerProximity(mouseX, mouseY);
-        });
-
-        function handleCornerProximity(mouseX, mouseY) {
-            const flipbookWidth = $flipbook.width();
-            const flipbookHeight = $flipbook.height();
-
             // Check proximity to bottom-left corner
-            if (mouseX < cornerSize && mouseY > (flipbookHeight - cornerSize)) {
+            if (mouseX < cornerSize && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                $flipbook.turn("start", "bl");
-            } else if (mouseX > cornerSize || mouseY < (flipbookHeight - cornerSize)) {
-                // Directly reset the corner animation if not close
+                // Ensure that we only start the turn if it's not already happening
+                if (!$flipbook.data("turning")) {
+                    $flipbook.data("turning", true); // Set a flag to indicate turning
+                    $flipbook.turn("start", "bl");
+                }
+            } else {
+                // Reset animation if not close
                 resetCornerAnimation("bl");
+                $flipbook.data("turning", false); // Reset the turning flag
             }
 
             // Check proximity to bottom-right corner
-            if (mouseX > (flipbookWidth - cornerSize) && mouseY > (flipbookHeight - cornerSize)) {
+            if (mouseX > ($flipbook.width() - cornerSize) && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                $flipbook.turn("start", "br");
-            } else if (mouseX < (flipbookWidth - cornerSize) || mouseY < (flipbookHeight - cornerSize)) {
-                // Directly reset the corner animation if not close
+                // Ensure that we only start the turn if it's not already happening
+                if (!$flipbook.data("turning")) {
+                    $flipbook.data("turning", true); // Set a flag to indicate turning
+                    $flipbook.turn("start", "br");
+                }
+            } else {
+                // Reset animation if not close
                 resetCornerAnimation("br");
+                $flipbook.data("turning", false); // Reset the turning flag
             }
-        }
+        });
 
         function resetCornerAnimation(corner) {
             const pageObject = $flipbook.turn("page", 1); // Replace 1 with the current page number

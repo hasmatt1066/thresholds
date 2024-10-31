@@ -74,9 +74,6 @@ $(document).ready(function() {
             } else {
                 $flipbook.turn("next");
             }
-
-            // Fade out overlay on any click
-            $overlay.fadeOut();
         });
 
         // Add keyboard navigation
@@ -84,13 +81,13 @@ $(document).ready(function() {
             switch(e.keyCode) {
                 case 37: // left arrow
                     $flipbook.turn('previous');
-                    $overlay.fadeOut(); // Fade out the overlay on left arrow key press
                     break;
                 case 39: // right arrow
                     $flipbook.turn('next');
-                    $overlay.fadeOut(); // Fade out the overlay on right arrow key press
                     break;
             }
+            // Fade out overlay on any navigation (keyboard or click)
+            $overlay.fadeOut();
         });
 
         // Handle mouse movement to trigger corner animations

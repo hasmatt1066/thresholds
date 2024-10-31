@@ -16,9 +16,9 @@ body {
 
 .overlay-text {
     position: absolute; /* Position overlay relative to container */
-    left: 0; /* Align to the left */
+    left: 25%; /* Position it a quarter from the left to keep it in the left half */
     top: 50%; /* Center vertically */
-    transform: translate(-50%, -50%); /* Adjust to center in the left half */
+    transform: translateY(-50%); /* Adjust vertical position */
     color: black; /* Text color */
     background-color: rgba(240, 240, 240, 0.9); /* Very light grey with slight transparency */
     padding: 20px; /* Adjust padding as needed */
@@ -28,6 +28,7 @@ body {
     height: auto; /* Auto height */
     text-align: center; /* Center text */
 }
+
 
 
 

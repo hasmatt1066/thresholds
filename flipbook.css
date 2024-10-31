@@ -29,6 +29,16 @@ body {
     text-align: center; /* Center text */
 }
 
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .overlay-text {
+        width: 80%; /* Make overlay width responsive */
+        left: 10%; /* Center horizontally in left half */
+        top: 40%; /* Slightly adjust vertical position */
+        transform: translateY(-50%); /* Keep vertical centering */
+    }
+}
+
 
 
 

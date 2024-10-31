@@ -32,7 +32,7 @@ $(document).ready(function() {
                     console.log('Turning to page:', page);
                     // Show the overlay if returning to the cover page (page 1)
                     if (page === 1) {
-                        $overlay.fadeIn(); // Reappear overlay
+                        $overlay.stop(true, true).fadeIn(); // Fade in overlay
                     }
                 },
                 turned: function(event, page, pageObject) {

@@ -14,7 +14,6 @@ $(document).ready(function() {
     const windowWidth = $(window).width();
     const windowHeight = $(window).height();
     const coverSize = Math.min(windowHeight * 0.8, windowWidth * 0.4);
-    const totalPages = $flipbook.turn('pages'); // Get total number of pages
 
     try {
         $flipbook.turn({
@@ -69,36 +68,28 @@ $(document).ready(function() {
             const flipbookOffset = $flipbook.offset();
             const flipbookWidth = $flipbook.width();
             const clickPositionX = event.pageX - flipbookOffset.left;
-            const currentPage = $flipbook.turn('current');
 
             if (clickPositionX < flipbookWidth / 2) {
                 // Navigate to the previous page
                 $flipbook.turn("previous");
             } else {
-                // Check if on the last page
-                if (currentPage === totalPages) {
-                    // Go back to cover page if on last page
-                    $flipbook.turn('page', 1); // Go back to cover page
-                } else {
-                    // Navigate to the next page
-                    $flipbook.turn("next");
-                }
+                // Navigate to the next page
+                $flipbook.turn("next");
             }
+
+            $overlay.fadeOut(); // Fade out the overlay on click
         });
 
         // Add keyboard navigation
         $(document).keydown(function(e) {
-            const currentPage = $flipbook.turn('current');
             switch(e.keyCode) {
                 case 37: // left arrow
                     $flipbook.turn('previous');
+                    $overlay.fadeOut(); // Fade out the overlay on left arrow key press
                     break;
                 case 39: // right arrow
-                    if (currentPage === totalPages) {
-                        $flipbook.turn('page', 1); // Go back to cover page if on last page
-                    } else {
-                        $flipbook.turn('next');
-                    }
+                    $flipbook.turn('next');
+                    $overlay.fadeOut(); // Fade out the overlay on right arrow key press
                     break;
             }
         });

@@ -36,23 +36,18 @@ $(document).ready(function() {
                 },
                 start: function(event, pageObject, corner) {
                     console.log('Starting turn from corner:', corner);
-
-                    // Only trigger animation for bottom-left and bottom-right corners
-                    if (corner === "bl" || corner === "br") {
-                        $(pageObject).css({
-                            "transition": "transform 0.3s ease",
-                            "transform": "rotateY(5deg)"  // Slight fold effect
-                        });
-                    }
+                    // Trigger animation for the current corner
+                    $(pageObject).css({
+                        "transition": "transform 0.3s ease",
+                        "transform": "rotateY(5deg)"  // Slight fold effect
+                    });
                 },
                 end: function(event, pageObject, corner) {
                     // Reset page after fold animation ends
-                    if (corner === "bl" || corner === "br") {
-                        $(pageObject).css({
-                            "transition": "transform 0.3s ease",
-                            "transform": "rotateY(0deg)"
-                        });
-                    }
+                    $(pageObject).css({
+                        "transition": "transform 0.3s ease",
+                        "transform": "rotateY(0deg)"
+                    });
                 }
             }
         });
@@ -90,27 +85,31 @@ $(document).ready(function() {
             const mouseX = event.pageX - flipbookOffset.left;
             const mouseY = event.pageY - flipbookOffset.top;
 
+            // Check proximity to corners and apply animations
+            handleCornerProximity(mouseX, mouseY);
+        });
+
+        function handleCornerProximity(mouseX, mouseY) {
+            const flipbookWidth = $flipbook.width();
+            const flipbookHeight = $flipbook.height();
+
             // Check proximity to bottom-left corner
-            if (mouseX < cornerSize && mouseY > ($flipbook.height() - cornerSize)) {
+            if (mouseX < cornerSize && mouseY > (flipbookHeight - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                // Trigger animation for bottom-left corner
                 $flipbook.turn("start", "bl");
-            } else {
-                // Reset animation if not close
+            } else if (mouseX > cornerSize || mouseY < (flipbookHeight - cornerSize)) {
                 $flipbook.turn("end", "bl");
             }
 
             // Check proximity to bottom-right corner
-            if (mouseX > ($flipbook.width() - cornerSize) && mouseY > ($flipbook.height() - cornerSize)) {
+            if (mouseX > (flipbookWidth - cornerSize) && mouseY > (flipbookHeight - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                // Trigger animation for bottom-right corner
                 $flipbook.turn("start", "br");
-            } else {
-                // Reset animation if not close
+            } else if (mouseX < (flipbookWidth - cornerSize) || mouseY < (flipbookHeight - cornerSize)) {
                 $flipbook.turn("end", "br");
             }
-        });
-        
+        }
+
     } catch (error) {
         console.error('Error initializing flipbook:', error);
     }

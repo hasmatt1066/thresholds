@@ -11,14 +11,32 @@ body {
 }
 
 .container {
+    display: flex; /* Use flexbox for horizontal alignment */
     margin: 0 auto;
     padding: 20px;
+    width: 100%; /* Ensure it takes full width */
+}
+
+.overlay-text {
+    position: relative; /* Adjusted for better placement */
+    top: 0; /* Reset top positioning */
+    left: 0; /* Align to the left */
+    color: black; /* Text color */
+    background-color: rgba(240, 240, 240, 0.9); /* Very light grey with slight transparency */
+    padding: 20px; /* Adjust padding as needed */
+    max-width: 300px; /* Maximum width for the text area */
+    z-index: 10; /* Ensure it's above the flipbook */
+    border-radius: 8px; /* Rounded corners */
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    align-items: center; /* Center the text vertically */
 }
 
 .flipbook {
     margin: 0 auto;
     transition: margin-left 0.25s ease-out;
     perspective: 1000px; /* Enable 3D perspective */
+    flex-grow: 1; /* Allow flipbook to take the remaining width */
 }
 
 .flipbook .page {
@@ -77,18 +95,4 @@ body {
 /* Styles for corner animations */
 .flipbook .page:hover {
     transform: rotateY(5deg); /* Slight fold effect on hover */
-}
-
-/* Overlay Text Styles */
-.overlay-text {
-    position: absolute; /* Position it absolutely */
-    top: 50%; /* Center vertically */
-    left: 0; /* Align to the left */
-    transform: translateY(-50%); /* Adjust for centering */
-    color: black; /* Text color */
-    background-color: rgba(240, 240, 240, 0.9); /* Very light grey with slight transparency */
-    padding: 20px; /* Adjust padding as needed */
-    max-width: 300px; /* Maximum width for the text area */
-    z-index: 10; /* Ensure it's above the flipbook */
-    border-radius: 8px; /* Rounded corners */
 }

@@ -84,7 +84,7 @@ $(document).ready(function() {
             }
         });
 
-        // Add mouse movement listener to trigger corner animation
+        // Handle mouse movement to trigger corner animations
         $(document).mousemove(function(event) {
             const flipbookOffset = $flipbook.offset();
             const mouseX = event.pageX - flipbookOffset.left;
@@ -93,13 +93,21 @@ $(document).ready(function() {
             // Check proximity to bottom-left corner
             if (mouseX < cornerSize && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                $flipbook.turn("next"); // Optional: turn page on hover
+                // Trigger animation for bottom-left corner
+                $flipbook.turn("start", "bl");
+            } else {
+                // Reset animation if not close
+                $flipbook.turn("end", "bl");
             }
 
             // Check proximity to bottom-right corner
             if (mouseX > ($flipbook.width() - cornerSize) && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                $flipbook.turn("previous"); // Optional: turn page on hover
+                // Trigger animation for bottom-right corner
+                $flipbook.turn("start", "br");
+            } else {
+                // Reset animation if not close
+                $flipbook.turn("end", "br");
             }
         });
         

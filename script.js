@@ -1,9 +1,7 @@
 /* script.js */
 $(document).ready(function() {
-    // Debug message to confirm jQuery is loaded
     console.log('jQuery version:', $.fn.jquery);
     
-    // Debug message to confirm turn.js is loaded
     if ($.fn.turn) {
         console.log('turn.js is loaded');
     } else {
@@ -11,15 +9,11 @@ $(document).ready(function() {
         return;
     }
     
-    // Get the window dimensions
     const windowWidth = $(window).width();
     const windowHeight = $(window).height();
-    
-    // Calculate the book dimensions
     const coverSize = Math.min(windowHeight * 0.8, windowWidth * 0.4);
-    
+
     try {
-        // Initialize the flipbook with debugging
         const $flipbook = $('#flipbook');
         
         $flipbook.turn({
@@ -41,11 +35,28 @@ $(document).ready(function() {
                 start: function(event, pageObject, corner) {
                     console.log('Starting turn from corner:', corner);
                 }
-            }
+            },
+            // Enable click navigation on edges and corner hover effect
+            turnCorners: "bl,br",  // Enable bottom left and bottom right corners for interaction
+            cornerSize: 100  // Set the size of the corners for easier clicking
         });
         
         console.log('Flipbook initialized successfully');
         
+        // Enable navigation by clicking on the left and right edges
+        $flipbook.on("click", function(event) {
+            const flipbookOffset = $flipbook.offset();
+            const flipbookWidth = $flipbook.width();
+            const clickPositionX = event.pageX - flipbookOffset.left;
+
+            // Click on the left half to go to the previous page, right half to go to the next page
+            if (clickPositionX < flipbookWidth / 2) {
+                $flipbook.turn("previous");
+            } else {
+                $flipbook.turn("next");
+            }
+        });
+
         // Add keyboard navigation
         $(document).keydown(function(e) {
             switch(e.keyCode) {

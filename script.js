@@ -84,10 +84,6 @@ $(document).ready(function() {
                     $flipbook.turn("next");
                 }
             }
-            // Fade out overlay when navigating away from cover page
-            if (currentPage !== 1) {
-                $overlay.fadeOut();
-            }
         });
 
         // Add keyboard navigation
@@ -104,10 +100,6 @@ $(document).ready(function() {
                         $flipbook.turn('next');
                     }
                     break;
-            }
-            // Fade out overlay when navigating away from cover page
-            if (currentPage !== 1) {
-                $overlay.fadeOut();
             }
         });
 

@@ -42,15 +42,6 @@ $(document).ready(function() {
                             "transform": "rotateY(5deg)"  // Slight fold effect
                         });
                     }
-                },
-                end: function(event, pageObject, corner) {
-                    // Reset page after fold animation ends
-                    if (corner === "bl" || corner === "br") {
-                        $(pageObject).css({
-                            "transition": "transform 0.3s ease",
-                            "transform": "rotateY(0deg)"
-                        });
-                    }
                 }
             }
         });
@@ -93,9 +84,6 @@ $(document).ready(function() {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
                 // Show corner animation for bottom-left
                 $flipbook.turn('start', 'bl');
-            } else {
-                // Hide corner animation if not close
-                $flipbook.turn('end', 'bl');
             }
 
             // Check proximity to bottom-right corner
@@ -103,12 +91,15 @@ $(document).ready(function() {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
                 // Show corner animation for bottom-right
                 $flipbook.turn('start', 'br');
-            } else {
-                // Hide corner animation if not close
-                $flipbook.turn('end', 'br');
             }
         });
-        
+
+        // Handle mouse leave event to reset corner animations
+        $flipbook.on('mouseleave', function() {
+            $(this).turn('end', 'bl');
+            $(this).turn('end', 'br');
+        });
+
     } catch (error) {
         console.error('Error initializing flipbook:', error);
     }

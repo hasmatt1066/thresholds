@@ -30,15 +30,15 @@ $(document).ready(function() {
             when: {
                 turning: function(event, page, pageObject) {
                     console.log('Turning to page:', page);
-                    // Show the overlay if returning to the cover page (page 1)
-                    if (page === 1) {
-                        $overlay.stop(true, true).fadeIn(); // Fade in overlay
-                    } else {
-                        $overlay.fadeOut(); // Fade out overlay when navigating away
-                    }
                 },
                 turned: function(event, page, pageObject) {
                     console.log('Turned to page:', page);
+                    // Show overlay if returning to cover page (page 1)
+                    if (page === 1) {
+                        $overlay.stop(true, true).fadeIn(); // Fade in overlay
+                    } else {
+                        $overlay.stop(true, true).fadeOut(); // Fade out overlay when navigating away
+                    }
                 },
                 start: function(event, pageObject, corner) {
                     console.log('Starting turn from corner:', corner);
@@ -87,7 +87,9 @@ $(document).ready(function() {
                     break;
             }
             // Fade out overlay on any navigation (keyboard or click)
-            $overlay.fadeOut();
+            if ($flipbook.turn('current') !== 1) {
+                $overlay.fadeOut();
+            }
         });
 
         // Handle mouse movement to trigger corner animations
@@ -130,3 +132,4 @@ $(document).ready(function() {
         $flipbook.turn('size', newCoverSize * 2, newCoverSize);
     });
 });
+

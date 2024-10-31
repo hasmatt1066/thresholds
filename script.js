@@ -75,7 +75,7 @@ $(document).ready(function() {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
                 // Trigger peeling for bottom-left corner
                 $flipbook.turn("peel", "bl");
-            } else {
+            } else if (mouseX > cornerSize || mouseY < ($flipbook.height() - cornerSize)) {
                 // Reset peeling if not close
                 $flipbook.turn("peel", false);
             }
@@ -85,7 +85,7 @@ $(document).ready(function() {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
                 // Trigger peeling for bottom-right corner
                 $flipbook.turn("peel", "br");
-            } else {
+            } else if (mouseX < ($flipbook.width() - cornerSize) || mouseY < ($flipbook.height() - cornerSize)) {
                 // Reset peeling if not close
                 $flipbook.turn("peel", false);
             }

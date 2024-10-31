@@ -25,6 +25,8 @@ $(document).ready(function() {
             gradients: true,
             elevation: 50,
             duration: 1000,
+            turnCorners: "bl,br",  // Enable bottom left and bottom right corners for interaction
+            cornerSize: 100,  // Set the size of the corners for easier clicking
             when: {
                 turning: function(event, page, pageObject) {
                     console.log('Turning to page:', page);
@@ -34,11 +36,25 @@ $(document).ready(function() {
                 },
                 start: function(event, pageObject, corner) {
                     console.log('Starting turn from corner:', corner);
+
+                    // Only trigger animation for bottom-left and bottom-right corners
+                    if (corner === "bl" || corner === "br") {
+                        $(pageObject).css({
+                            "transition": "transform 0.3s ease",
+                            "transform": "rotateY(5deg)"  // Slight fold effect
+                        });
+                    }
+                },
+                end: function(event, pageObject, corner) {
+                    // Reset page after fold animation ends
+                    if (corner === "bl" || corner === "br") {
+                        $(pageObject).css({
+                            "transition": "transform 0.3s ease",
+                            "transform": "rotateY(0deg)"
+                        });
+                    }
                 }
-            },
-            // Enable click navigation on edges and corner hover effect
-            turnCorners: "bl,br",  // Enable bottom left and bottom right corners for interaction
-            cornerSize: 100  // Set the size of the corners for easier clicking
+            }
         });
         
         console.log('Flipbook initialized successfully');
@@ -49,7 +65,6 @@ $(document).ready(function() {
             const flipbookWidth = $flipbook.width();
             const clickPositionX = event.pageX - flipbookOffset.left;
 
-            // Click on the left half to go to the previous page, right half to go to the next page
             if (clickPositionX < flipbookWidth / 2) {
                 $flipbook.turn("previous");
             } else {

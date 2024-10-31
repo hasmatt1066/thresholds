@@ -98,7 +98,8 @@ $(document).ready(function() {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
                 $flipbook.turn("start", "bl");
             } else if (mouseX > cornerSize || mouseY < (flipbookHeight - cornerSize)) {
-                $flipbook.turn("end", "bl");
+                // Directly reset the corner animation if not close
+                resetCornerAnimation("bl");
             }
 
             // Check proximity to bottom-right corner
@@ -106,8 +107,17 @@ $(document).ready(function() {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
                 $flipbook.turn("start", "br");
             } else if (mouseX < (flipbookWidth - cornerSize) || mouseY < (flipbookHeight - cornerSize)) {
-                $flipbook.turn("end", "br");
+                // Directly reset the corner animation if not close
+                resetCornerAnimation("br");
             }
+        }
+
+        function resetCornerAnimation(corner) {
+            const pageObject = $flipbook.turn("page", 1); // Replace 1 with the current page number
+            $(pageObject).css({
+                "transition": "transform 0.3s ease",
+                "transform": "rotateY(0deg)"
+            });
         }
 
     } catch (error) {

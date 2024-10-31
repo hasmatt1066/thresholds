@@ -32,15 +32,14 @@ body {
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     .overlay-text {
-        width: 80%; /* Make overlay width responsive */
-        left: 10%; /* Center horizontally in left half */
-        top: 40%; /* Slightly adjust vertical position */
-        transform: translateY(-50%); /* Keep vertical centering */
+        position: fixed; /* Change to fixed positioning */
+        left: 0; /* Align to the left */
+        top: 20%; /* Position it above the flipbook */
+        width: 100%; /* Full width for mobile */
+        transform: translateY(0); /* Reset vertical transform */
+        z-index: 20; /* Ensure it's above everything */
     }
 }
-
-
-
 
 .flipbook {
     margin: 0 auto;

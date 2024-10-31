@@ -24,7 +24,7 @@ $(document).ready(function() {
             gradients: true,
             elevation: 50,
             duration: 1000,
-            corners: 'all',  // Activate all corners for interaction
+            corners: 'all',  // Enable interaction for all corners
             cornerSize: cornerSize, // Set the size of the corners
             when: {
                 turning: function(event, page, pageObject) {
@@ -35,11 +35,19 @@ $(document).ready(function() {
                 },
                 start: function(event, pageObject, corner) {
                     console.log('Starting turn from corner:', corner);
-                    // Trigger corner animation for bl and br corners
+                    // Trigger animation for bottom-left and bottom-right corners
                     if (corner === "bl" || corner === "br") {
                         $(pageObject).css({
                             "transition": "transform 0.3s ease",
                             "transform": "rotateY(5deg)"  // Slight fold effect
+                        });
+                    }
+                },
+                end: function(event, pageObject, corner) {
+                    // Reset the page after fold animation ends
+                    if (corner === "bl" || corner === "br") {
+                        $(pageObject).css({
+                            "transform": "rotateY(0deg)"
                         });
                     }
                 }
@@ -47,7 +55,7 @@ $(document).ready(function() {
         });
 
         console.log('Flipbook initialized successfully');
-        
+
         // Enable navigation by clicking on the left and right edges
         $flipbook.on("click", function(event) {
             const flipbookOffset = $flipbook.offset();
@@ -103,7 +111,7 @@ $(document).ready(function() {
     } catch (error) {
         console.error('Error initializing flipbook:', error);
     }
-    
+
     // Handle window resize
     $(window).resize(function() {
         const newWindowWidth = $(window).width();

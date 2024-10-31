@@ -9,6 +9,7 @@ $(document).ready(function() {
     }
     
     const $flipbook = $('#flipbook');
+    const $overlay = $('.overlay-text'); // Select the overlay
     const cornerSize = 100; // Size of the corners
     const windowWidth = $(window).width();
     const windowHeight = $(window).height();
@@ -32,6 +33,8 @@ $(document).ready(function() {
                 },
                 turned: function(event, page, pageObject) {
                     console.log('Turned to page:', page);
+                    // Hide the overlay when the book is turned
+                    $overlay.fadeOut();
                 },
                 start: function(event, pageObject, corner) {
                     console.log('Starting turn from corner:', corner);
@@ -67,6 +70,8 @@ $(document).ready(function() {
             } else {
                 $flipbook.turn("next");
             }
+            // Hide the overlay when clicking
+            $overlay.fadeOut();
         });
 
         // Add keyboard navigation
@@ -74,9 +79,11 @@ $(document).ready(function() {
             switch(e.keyCode) {
                 case 37: // left arrow
                     $flipbook.turn('previous');
+                    $overlay.fadeOut(); // Hide the overlay on left arrow
                     break;
                 case 39: // right arrow
                     $flipbook.turn('next');
+                    $overlay.fadeOut(); // Hide the overlay on right arrow
                     break;
             }
         });

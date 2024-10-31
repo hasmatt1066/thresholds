@@ -33,21 +33,6 @@ $(document).ready(function() {
                 },
                 turned: function(event, page, pageObject) {
                     console.log('Turned to page:', page);
-                },
-                start: function(event, pageObject, corner) {
-                    console.log('Starting turn from corner:', corner);
-                    // Trigger animation for the current corner
-                    $(pageObject).css({
-                        "transition": "transform 0.3s ease",
-                        "transform": "rotateY(5deg)"  // Slight fold effect
-                    });
-                },
-                end: function(event, pageObject, corner) {
-                    // Reset page after fold animation ends
-                    $(pageObject).css({
-                        "transition": "transform 0.3s ease",
-                        "transform": "rotateY(0deg)"
-                    });
                 }
             }
         });
@@ -88,39 +73,23 @@ $(document).ready(function() {
             // Check proximity to bottom-left corner
             if (mouseX < cornerSize && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                // Ensure that we only start the turn if it's not already happening
-                if (!$flipbook.data("turning")) {
-                    $flipbook.data("turning", true); // Set a flag to indicate turning
-                    $flipbook.turn("start", "bl");
-                }
+                // Trigger peeling for bottom-left corner
+                $flipbook.turn("peel", "bl");
             } else {
-                // Reset animation if not close
-                resetCornerAnimation("bl");
-                $flipbook.data("turning", false); // Reset the turning flag
+                // Reset peeling if not close
+                $flipbook.turn("peel", false);
             }
 
             // Check proximity to bottom-right corner
             if (mouseX > ($flipbook.width() - cornerSize) && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                // Ensure that we only start the turn if it's not already happening
-                if (!$flipbook.data("turning")) {
-                    $flipbook.data("turning", true); // Set a flag to indicate turning
-                    $flipbook.turn("start", "br");
-                }
+                // Trigger peeling for bottom-right corner
+                $flipbook.turn("peel", "br");
             } else {
-                // Reset animation if not close
-                resetCornerAnimation("br");
-                $flipbook.data("turning", false); // Reset the turning flag
+                // Reset peeling if not close
+                $flipbook.turn("peel", false);
             }
         });
-
-        function resetCornerAnimation(corner) {
-            const pageObject = $flipbook.turn("page", 1); // Replace 1 with the current page number
-            $(pageObject).css({
-                "transition": "transform 0.3s ease",
-                "transform": "rotateY(0deg)"
-            });
-        }
 
     } catch (error) {
         console.error('Error initializing flipbook:', error);

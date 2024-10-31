@@ -1,4 +1,3 @@
-/* script.js */
 $(document).ready(function() {
     console.log('jQuery version:', $.fn.jquery);
     
@@ -25,18 +24,37 @@ $(document).ready(function() {
             gradients: true,
             elevation: 50,
             duration: 1000,
-            turnCorners: "bl,br",  // Enable bottom left and bottom right corners for interaction
-            cornerSize: cornerSize, // Set the size of the corners for easier clicking
+            corners: 'all',  // Activate all corners for interaction
+            cornerSize: cornerSize, // Set the size of the corners
             when: {
                 turning: function(event, page, pageObject) {
                     console.log('Turning to page:', page);
                 },
                 turned: function(event, page, pageObject) {
                     console.log('Turned to page:', page);
+                },
+                start: function(event, pageObject, corner) {
+                    console.log('Starting turn from corner:', corner);
+                    // Trigger corner animation for bl and br corners
+                    if (corner === "bl" || corner === "br") {
+                        $(pageObject).css({
+                            "transition": "transform 0.3s ease",
+                            "transform": "rotateY(5deg)"  // Slight fold effect
+                        });
+                    }
+                },
+                end: function(event, pageObject, corner) {
+                    // Reset page after fold animation ends
+                    if (corner === "bl" || corner === "br") {
+                        $(pageObject).css({
+                            "transition": "transform 0.3s ease",
+                            "transform": "rotateY(0deg)"
+                        });
+                    }
                 }
             }
         });
-        
+
         console.log('Flipbook initialized successfully');
         
         // Enable navigation by clicking on the left and right edges
@@ -73,24 +91,24 @@ $(document).ready(function() {
             // Check proximity to bottom-left corner
             if (mouseX < cornerSize && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                // Trigger peeling for bottom-left corner
-                $flipbook.turn("peel", "bl");
-            } else if (mouseX > cornerSize || mouseY < ($flipbook.height() - cornerSize)) {
-                // Reset peeling if not close
-                $flipbook.turn("peel", false);
+                // Show corner animation for bottom-left
+                $flipbook.turn('start', 'bl');
+            } else {
+                // Hide corner animation if not close
+                $flipbook.turn('end', 'bl');
             }
 
             // Check proximity to bottom-right corner
             if (mouseX > ($flipbook.width() - cornerSize) && mouseY > ($flipbook.height() - cornerSize)) {
                 $flipbook.css("cursor", "pointer"); // Change cursor style
-                // Trigger peeling for bottom-right corner
-                $flipbook.turn("peel", "br");
-            } else if (mouseX < ($flipbook.width() - cornerSize) || mouseY < ($flipbook.height() - cornerSize)) {
-                // Reset peeling if not close
-                $flipbook.turn("peel", false);
+                // Show corner animation for bottom-right
+                $flipbook.turn('start', 'br');
+            } else {
+                // Hide corner animation if not close
+                $flipbook.turn('end', 'br');
             }
         });
-
+        
     } catch (error) {
         console.error('Error initializing flipbook:', error);
     }

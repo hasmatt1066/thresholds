@@ -30,6 +30,12 @@ $(document).ready(function() {
             when: {
                 turning: function(event, page, pageObject) {
                     console.log('Turning to page:', page);
+                    // Show the overlay if returning to the cover page (page 1)
+                    if (page === 1) {
+                        $overlay.fadeIn(); // Reappear overlay
+                    } else {
+                        $overlay.fadeOut(); // Hide overlay for other pages
+                    }
                 },
                 turned: function(event, page, pageObject) {
                     console.log('Turned to page:', page);

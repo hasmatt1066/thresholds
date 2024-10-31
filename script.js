@@ -33,6 +33,8 @@ $(document).ready(function() {
                     // Show the overlay if returning to the cover page (page 1)
                     if (page === 1) {
                         $overlay.stop(true, true).fadeIn(); // Fade in overlay
+                    } else {
+                        $overlay.fadeOut(); // Fade out overlay when navigating away
                     }
                 },
                 turned: function(event, page, pageObject) {
@@ -73,7 +75,8 @@ $(document).ready(function() {
                 $flipbook.turn("next");
             }
 
-            $overlay.fadeOut(); // Fade out the overlay on click
+            // Fade out overlay on any click
+            $overlay.fadeOut();
         });
 
         // Add keyboard navigation
